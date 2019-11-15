@@ -1,0 +1,534 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pgh.Services.Authentification</name>
+    </assembly>
+    <members>
+        <member name="M:Pgh.Services.Authentification.Controllers.ApplicationsController.Get(System.Guid)">
+             <summary>
+             Get list of Applications with parameter passed in the query.
+             </summary>
+             <remarks>
+             Sample request:
+                 Get api/Application/00000000-0000-0000-0000-000000000000
+                The Id must be a valid Guid.
+             </remarks>
+            <returns>
+            1-The Application from the database if exist
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.ApplicationsController.GetList(Pgh.Common.Common.ResourceParameters)">
+             <summary>
+             Get list of Permission with parameter passed in the query.(Not filtered)
+             </summary>
+             <remarks>
+             List of permission with the specified parameter using the order defined in the database
+            Return the urls for navigation to the next or previous collection in the header response.
+            the page size by default is set to 1000
+             </remarks>
+            <param name="resourceParameters"></param>
+             <response code="500">Internal server error</response>  
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.ApplicationsController.Post(System.Collections.Generic.IEnumerable{Pgh.Auth.Model.ModelViews.Dto.ApplicationDtoCreate})">
+             <summary>
+             Add a list of application to the database from the body of the api call.(Passed by as an array)
+             </summary>
+             <remarks>
+             Sample request:
+                 post api/application/PostMany
+             </remarks>
+            <param name="li"></param>
+            <returns>
+            The new Applications Created.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.ApplicationsController.Put(System.Collections.Generic.IEnumerable{Pgh.Auth.Model.ModelViews.Dto.ApplicationDtoRead})">
+             <summary>
+             Update one or Many Applications at the same time. Applications list are passed as array.
+             </summary>
+             <remarks>
+             Sample request:
+                 put api/application/
+             </remarks>
+            <param name="liEntity"></param>
+            <returns>
+            The applications Updated.(can be changed to return only the Ids of the applications , or a message with ok.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.ApplicationsController.Delete(System.Guid)">
+             <summary>
+             Delete one applications from the database.
+             </summary>
+             <remarks>
+             Sample request:
+                 Delete api/applications/
+             </remarks>
+            <param name="id"></param>
+            <returns>
+            Message saying Ok or only status code 200.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.ApplicationsController.Delete(System.Collections.Generic.List{System.Guid})">
+             <summary>
+             Delete Many applications At the Same time.
+             </summary>
+             <remarks>
+             Sample request:
+                 Delete api/application/
+             pass the list of Guid of the applications you want to delete in the Body of the request.
+             </remarks>
+            <param name="liGuids"></param>
+            <returns>
+            Message saying Ok or only status code 200.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.GroupeController.Get(System.Guid)">
+             <summary>
+             Get list of Groupes with parameter passed in the query.
+             </summary>
+             <remarks>
+             Sample request:
+                 Get api/Groupes/00000000-0000-0000-0000-000000000000
+                The Id must be a valid Guid.
+             </remarks>
+            <returns>
+            1-The Groupes from the database if exist
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.GroupeController.GetList(Pgh.Common.Common.ResourceParameters)">
+             <summary>
+             Get list of Groupes with parameter passed in the query.(Not filtered)
+             </summary>
+             <remarks>
+             List of Groupes with the specified parameter using the order defined in the database
+            Return the urls for navigation to the next or previous collection in the header response.
+            the page size by default is set to 1000
+             </remarks>
+            <param name="resourceParameters"></param>
+             <response code="500">Internal server error</response>  
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.GroupeController.Post(System.Collections.Generic.IEnumerable{Pgh.Auth.Model.ModelViews.Dto.GroupeDtoCreate})">
+             <summary>
+             Add a list of Groupes to the database from the body of the api call.(Passed by as an array)
+             </summary>
+             <remarks>
+             Sample request:
+                 post api/Groupes/PostMany
+             </remarks>
+            <param name="li"></param>
+            <returns>
+            The new User Created.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.GroupeController.Put(System.Collections.Generic.IEnumerable{Pgh.Auth.Model.ModelViews.Dto.GroupeDtoReadUpdate})">
+             <summary>
+             Update one or Many Groupes at the same time. Groupes list are passed as array.
+             </summary>
+             <remarks>
+             Sample request:
+                 put api/Groupes/
+             </remarks>
+            <param name="liEntity"></param>
+            <returns>
+            The Groupes Updated.(can be changed to return only the Ids of the Groupes , or a message with ok.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.GroupeController.Delete(System.Guid)">
+             <summary>
+             Delete one Groupes from the database.
+             </summary>
+             <remarks>
+             Sample request:
+                 Delete api/Groupes/
+             </remarks>
+            <param name="id"></param>
+            <returns>
+            Message saying Ok or only status code 200.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.GroupeController.Delete(System.Collections.Generic.List{System.Guid})">
+             <summary>
+             Delete Many Groupes At the Same time.
+             </summary>
+             <remarks>
+             Sample request:
+                 Delete api/Groupes/
+            and pass the list of Guid of the Groupes you want to delete in the Body of the request.
+             </remarks>
+            <param name="liGuids"></param>
+            <returns>
+            Message saying Ok or only status code 200.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.MenusController.Get(System.Guid)">
+             <summary>
+             Get list of Menu with parameter passed in the query.
+             </summary>
+             <remarks>
+             Sample request:
+                 Get api/Users/00000000-0000-0000-0000-000000000000
+                The Id must be a valid Guid.
+             </remarks>
+            <returns>
+            1-The Users from the database if exist
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.MenusController.GetListHierarchy(System.Guid)">
+             <summary>
+             Get list of Menus recursive.(Tree list based on Menus ID).
+             </summary>
+             <remarks>
+             List of Menus with the specified parameter using the order defined in the database
+             </remarks>
+            <param name="menuId"></param>
+             <response code="500">Internal server error</response>  
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.MenusController.Post(Pgh.Auth.Model.ModelViews.Dto.MenusDtoCreateList)">
+             <summary>
+             Add a list of Menus to the database from the body of the api call.(Recursion Method)
+             </summary>
+             <remarks>
+             Sample request:
+                 post api/Menus/
+             </remarks>
+            <param name="li"></param>
+            <returns>
+            The new User Created.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.MenusController.Put(System.Collections.Generic.IEnumerable{Pgh.Auth.Model.ModelViews.Dto.MenusDtoUpdate})">
+             <summary>
+             Update one or Many Menus at the same time. Menus list are passed as array.
+             </summary>
+             <remarks>
+             Sample request:
+                 put api/Users/
+             </remarks>
+            <param name="liEntity"></param>
+            <returns>
+            The Users Updated.(can be changed to return only the Ids of the Menus , or a message with ok.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.MenusController.Delete(System.Guid)">
+             <summary>
+             Delete one user from the database.
+             </summary>
+             <remarks>
+             Sample request:
+                 Delete api/Users/
+             </remarks>
+            <param name="id"></param>
+            <returns>
+            Message saying Ok or only status code 200.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.MenusController.Delete(System.Collections.Generic.List{System.Guid})">
+             <summary>
+             Delete Many Users At the Same time.
+             </summary>
+             <remarks>
+             Sample request:
+                 Delete api/Users/
+            andp pass the list of Guid of the users you want to delete in the Body of the request.
+             </remarks>
+            <param name="liGuids"></param>
+            <returns>
+            Message saying Ok or only status code 200.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.PermissionsController.Get(System.Guid)">
+             <summary>
+             Get list of Permissions with parameter passed in the query.
+             </summary>
+             <remarks>
+             Sample request:
+                 Get api/Permissions/00000000-0000-0000-0000-000000000000
+                The Id must be a valid Guid.
+             </remarks>
+            <returns>
+            1-The Permissions from the database if exist
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.PermissionsController.GetList(Pgh.Common.Common.ResourceParameters)">
+             <summary>
+             Get list of Permission with parameter passed in the query.(Not filtered)
+             </summary>
+             <remarks>
+             List of permission with the specified parameter using the order defined in the database
+            Return the urls for navigation to the next or previous collection in the header response.
+            the page size by default is set to 1000
+             </remarks>
+            <param name="resourceParameters"></param>
+             <response code="500">Internal server error</response>  
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.PermissionsController.Post(Pgh.Auth.Model.ModelViews.Dto.PermissionDtoCreate)">
+             <summary>
+             Add Permission to the database from the body of the api call/
+             </summary>
+             <remarks>
+             Sample request:
+             post api/Permissions
+             </remarks>
+            <param name="permission"></param>
+            <returns>
+            The new User Created.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.PermissionsController.PostMany(System.Collections.Generic.IEnumerable{Pgh.Auth.Model.ModelViews.Dto.PermissionDtoCreate})">
+             <summary>
+             Add a list of Permissions to the database from the body of the api call.(Passed by as an array)
+             </summary>
+             <remarks>
+             Sample request:
+                 post api/Permissions/PostMany
+             </remarks>
+            <param name="li"></param>
+            <returns>
+            The new User Created.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.PermissionsController.Put(System.Collections.Generic.IEnumerable{Pgh.Auth.Model.ModelViews.Dto.PermissionDtoReadUpdate})">
+             <summary>
+             Update one or Many Permission at the same time. Permissions list are passed as array.
+             </summary>
+             <remarks>
+             Sample request:
+                 put api/Permissions/
+             </remarks>
+            <param name="liEntity"></param>
+            <returns>
+            The Permission Updated.(can be changed to return only the Ids of the permissions , or a message with ok.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.PermissionsController.Delete(System.Guid)">
+             <summary>
+             Delete one Permission from the database.
+             </summary>
+             <remarks>
+             Sample request:
+                 Delete api/Permissions/
+             </remarks>
+            <param name="id"></param>
+            <returns>
+            Message saying Ok or only status code 200.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.PermissionsController.Delete(System.Collections.Generic.List{System.Guid})">
+             <summary>
+             Delete Many Permissions At the Same time.
+             </summary>
+             <remarks>
+             Sample request:
+                 Delete api/Permissions/
+            andp pass the list of Guid of the Permissions you want to delete in the Body of the request.
+             </remarks>
+            <param name="liGuids"></param>
+            <returns>
+            Message saying Ok or only status code 200.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.RoleController.Get(System.Guid)">
+             <summary>
+             Get list of roles with parameter passed in the query.
+             </summary>
+             <remarks>
+             Sample request:
+                 Get api/role/00000000-0000-0000-0000-000000000000
+                The Id must be a valid Guid.
+             </remarks>
+            <returns>
+            1-The roles from the database if exist
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.RoleController.List(Pgh.Common.Common.ResourceParameters)">
+             <summary>
+             Get list of Roles with parameter passed in the query.(Not filtered)
+             </summary>
+             <remarks>
+             List of role with the specified parameter using the order defined in the database
+            Return the urls for navigation to the next or previous collection in the header response.
+            the page size by default is set to 1000
+             </remarks>
+            <param name="resourceParameters"></param>
+             <response code="500">Internal server error</response>  
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.RoleController.Post(Pgh.Auth.Model.ModelViews.Dto.RoleDtoForCreate)">
+             <summary>
+             Add Permission to the database from the body of the api call/
+             </summary>
+             <remarks>
+             Sample request:
+             post api/role
+             </remarks>
+            <param name="obj"></param>
+            <returns>
+            The new User Created.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.RoleController.AddList(System.Collections.Generic.IEnumerable{Pgh.Auth.Model.ModelViews.Dto.RoleDtoForCreate})">
+             <summary>
+             Add a list of roles to the database from the body of the api call.(Passed by as an array)
+             </summary>
+             <remarks>
+             Sample request:
+                 post api/role/PostMany
+             </remarks>
+            <param name="li"></param>
+            <returns>
+            The new User Created.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.RoleController.Put(System.Collections.Generic.IEnumerable{Pgh.Auth.Model.ModelViews.Dto.RoleDtoForReadUpdate})">
+             <summary>
+             Update one or Many roles at the same time. roles list are passed as array.
+             </summary>
+             <remarks>
+             Sample request:
+                 put api/role/
+             </remarks>
+            <param name="liEntity"></param>
+            <returns>
+            The Permission Updated.(can be changed to return only the Ids of the permissions , or a message with ok.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.RoleController.Delete(System.Guid)">
+             <summary>
+             Delete one Permission from the database.
+             </summary>
+             <remarks>
+             Sample request:
+                 Delete api/role/
+             </remarks>
+            <param name="id"></param>
+            <returns>
+            Message saying Ok or only status code 200.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.RoleController.Delete(System.Collections.Generic.List{System.Guid})">
+             <summary>
+             Delete Many roles At the Same time.
+             </summary>
+             <remarks>
+             Sample request:
+                 Delete api/role/
+            pass the list of Guid of the roles you want to delete in the Body of the request.
+             </remarks>
+            <param name="liGuids"></param>
+            <returns>
+            Message saying Ok or only status code 200.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.UsersController.Get(System.Guid)">
+             <summary>
+             Get list of users with parameter passed in the query.
+             </summary>
+             <remarks>
+             Sample request:
+                 Get api/Users/00000000-0000-0000-0000-000000000000
+                The Id must be a valid Guid.
+             </remarks>
+            <returns>
+            1-The Users from the database if exist
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.UsersController.GetListHierarchy(System.Guid)">
+             <summary>
+             Get list of users with recursive.(Tree list based on user ID).
+             </summary>
+             <remarks>
+             List of users with the specified parameter using the order defined in the database
+            Return the urls for navigation to the next or previous collection in the header response.
+            the page size by default is set to 1000
+             </remarks>
+            <param name="userId"></param>
+             <response code="500">Internal server error</response>  
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.UsersController.Post(Pgh.Auth.Model.ModelViews.Dto.UsersDtoCreateList)">
+              <summary>
+              Add a list of Users to the database from the body of the api call.(Passed by as an array)
+              </summary>
+              <remarks>
+              Sample request:
+                  post api/Users/
+            
+             Unlike the previous Post this one has a field UserSupGuid that you can put value in it if the user have a supervisor.
+              </remarks>
+             <param name="li"></param>
+             <returns>
+             The new User Created.
+             </returns>
+              <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.UsersController.Put(System.Collections.Generic.IEnumerable{Pgh.Auth.Model.ModelViews.Dto.UsersDtoForUpdate})">
+             <summary>
+             Update one or Many Users at the same time. Users list are passed as array.
+             </summary>
+             <remarks>
+             Sample request:
+                 put api/Users/
+             </remarks>
+            <param name="liEntity"></param>
+            <returns>
+            The Users Updated.(can be changed to return only the Ids of the users , or a message with ok.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.UsersController.Delete(System.Guid)">
+             <summary>
+             Delete one user from the database.
+             </summary>
+             <remarks>
+             Sample request:
+                 Delete api/Users/
+             </remarks>
+            <param name="id"></param>
+            <returns>
+            Message saying Ok or only status code 200.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+        <member name="M:Pgh.Services.Authentification.Controllers.UsersController.Delete(System.Collections.Generic.List{System.Guid})">
+             <summary>
+             Delete Many Users At the Same time.
+             </summary>
+             <remarks>
+             Sample request:
+                 Delete api/Users/
+            andp pass the list of Guid of the users you want to delete in the Body of the request.
+             </remarks>
+            <param name="liGuids"></param>
+            <returns>
+            Message saying Ok or only status code 200.
+            </returns>
+             <response code="500">Internal server error</response> 
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,37 @@
+
+  ngOnInit() {
+
+    this.datafiliale.getFiliale().subscribe(res => {
+      this.datafiliale.list = res as Filiale[]
+
+      let currentUser = this.authenticationService.currentUserValue;
+      if (currentUser && currentUser.Role_Utilisateur) {
+        this.userRole = currentUser.Role_Utilisateur;
+        this.filialeId = currentUser.Filiale_Utilisateur;
+
+        this.data
+          .getlistCF()
+          .subscribe(res => {
+            this.listCF = (res as CompresseurFiliale[]).filter(x => x.active == true);
+            //.filter(x => x.active == true && x.filialeID == this.filialeId)
+            this.data
+              .getGRhs()
+              .toPromise()
+              .then(res => {
+                this.data.list = res as GRHs[];
+                if (this.userRole == 'Responsable') {
+                  this.data.list = this.data.list.filter(x => this.GetFilialeByIDCorrespondance(x.compFilialeID).filialeID == this.filialeId);
+                }
+              });
+          });
+
+
+
+      }
+
+
+    });
+
+  }
+ filialeId: string;
+  userRole: string;

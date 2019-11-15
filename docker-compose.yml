@@ -1,0 +1,43 @@
+version: '3.4'
+
+services:
+  pgh.services.authentification:
+    image: ${DOCKER_REGISTRY-}pghservicesauthentification
+    build:
+      context: .
+      dockerfile: Pgh.Services.Authentification/Dockerfile
+
+  suivicompresseur.apigateways:
+    image: ${DOCKER_REGISTRY-}suivicompresseurapigateways
+    build:
+      context: .
+      dockerfile: SuiviCompresseur.ApiGateways/Dockerfile
+
+
+  suivicompresseur.gestioncompresseur.api:
+    image: ${DOCKER_REGISTRY-}suivicompresseurgestioncompresseurapi
+    build:
+      context: .
+      dockerfile: SuiviCompresseur.GestionCompresseur.Api/Dockerfile
+
+
+  suivicompresseur.gestionfournisseur.api:
+    image: ${DOCKER_REGISTRY-}suivicompresseurgestionfournisseurapi
+    build:
+      context: .
+      dockerfile: SuiviCompresseur.GestionFournisseur.Api/Dockerfile
+
+
+  suivicompresseur.gestionresponsable.api:
+    image: ${DOCKER_REGISTRY-}suivicompresseurgestionresponsableapi
+    build:
+      context: .
+      dockerfile: SuiviCompresseur.GestionResponsable.Api/Dockerfile
+
+
+  suivicompresseur.notification.api:
+    image: ${DOCKER_REGISTRY-}suivicompresseurnotificationapi
+    build:
+      context: .
+      dockerfile: SuiviCompresseur.Notification.Api/Dockerfile
+

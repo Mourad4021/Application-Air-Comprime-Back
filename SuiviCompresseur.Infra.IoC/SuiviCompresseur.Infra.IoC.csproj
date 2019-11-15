@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SuiviCompresseur.GestionCompresseur.Application\SuiviCompresseur.GestionCompresseur.Application.csproj" />
+    <ProjectReference Include="..\SuiviCompresseur.GestionCompresseur.Data\SuiviCompresseur.GestionCompresseur.Data.csproj" />
+    <ProjectReference Include="..\SuiviCompresseur.GestionFournisseur.Application\SuiviCompresseur.GestionFournisseur.Application.csproj" />
+    <ProjectReference Include="..\SuiviCompresseur.GestionFournisseur.Data\SuiviCompresseur.GestionFournisseur.Data.csproj" />
+    <ProjectReference Include="..\SuiviCompresseur.Gestion.Responsable.Aplication\SuiviCompresseur.Gestion.Responsable.Aplication.csproj" />
+    <ProjectReference Include="..\SuiviCompresseur.Gestion.Responsable.Data\SuiviCompresseur.Gestion.Responsable.Data.csproj" />
+    <ProjectReference Include="..\SuiviCompresseur.Gestion.Responsable.Domain\SuiviCompresseur.Gestion.Responsable.Domain.csproj" />
+    <ProjectReference Include="..\SuiviCompresseur.Notification.Data\SuiviCompresseur.Notification.Data.csproj" />
+    <ProjectReference Include="..\SuiviCompresseur.Notification.Domain\SuiviCompresseur.Notification.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Mvc.Core">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.mvc.core\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
