@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using SuiviCompresseur.GestionCompresseur.Domain.Enum;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -27,5 +28,5 @@ namespace SuiviCompresseur.GestionCompresseur.Domain.DTOs
         public ICollection<IFormFile> Attachments { get; set; }
 
     }
-    public enum ListeEtat { En_marche, En_panne, Reserve }
+   
 }

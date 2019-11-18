@@ -130,6 +130,8 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
                     equip_Filiales_Comp_Sech.NumSerie = compresseurSecheurFiliale.NumSerie;
                     equip_Filiales_Comp_Sech.PrixAcquisition = compresseurSecheurFiliale.PrixAcquisition;
                     equip_Filiales_Comp_Sech.DateAcquisition = compresseurSecheurFiliale.DateAcquisition;
+                    equip_Filiales_Comp_Sech.HaveDebitMetre = compresseurSecheurFiliale.HaveDebitMetre;
+                    equip_Filiales_Comp_Sech.HaveElectricCounter = compresseurSecheurFiliale.HaveElectricCounter;
 
 
                     PostEquip_Filiales_Comp_Sech(equip_Filiales_Comp_Sech);
