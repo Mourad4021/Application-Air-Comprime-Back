@@ -322,6 +322,58 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
             return DateTime.Now.Date.ToString("d");
         }
 
+
+
+
+        // GET: api/EquipementFiliales/CompresseursFiliales
+        [AllowAnonymous]
+        [HttpGet("CompresseursFiliales")]
+        public async Task<IEnumerable<CompresseurSecheurFiliale>> GetActiveCompresseursFiliale()
+        {
+
+            List<EquipementFiliale> CompresseurFilialeList = new List<EquipementFiliale>();
+
+           
+            var listCompresseur = _context.Compresseurs.Where(x => x.GetType().Equals(typeof(Compresseur))).ToList();
+            IEnumerable<Equipement> activeCompresseur = listCompresseur.Where(x => x.Active == true);
+
+            foreach (Equipement compresseur in listCompresseur.ToList())
+            {
+                foreach (EquipementFiliale equipementFiliale in _context.EquipementFiliales.ToList())
+                {
+                    if (compresseur.EquipementID == equipementFiliale.EquipementID)
+                    {
+                        CompresseurFilialeList.Add(equipementFiliale);
+                    }
+                }
+            }
+
+
+            IEnumerable<EquipementFiliale> activeEquipementFiliale = CompresseurFilialeList.Where(x => x.Active == true);
+            List<CompresseurSecheurFiliale> CompresseurFiliale = new List<CompresseurSecheurFiliale>();
+
+
+            foreach (var item in activeEquipementFiliale)
+            {
+                CompresseurSecheurFiliale compresseurSecheurFiliale = new CompresseurSecheurFiliale();
+                var compsechfiliale = _context.EquipFilialesCompSeches.Where(x => x.EFID == item.EquipementFilialeID).FirstOrDefault();
+
+                compresseurSecheurFiliale.EquipementFilialeID = item.EquipementFilialeID;
+                compresseurSecheurFiliale.EquipementID = item.EquipementID;
+                compresseurSecheurFiliale.FilialeID = item.FilialeID;
+                compresseurSecheurFiliale.Nom = item.Nom;
+                compresseurSecheurFiliale.Active = item.Active;
+                compresseurSecheurFiliale.EquipementFilialeCompSechID = compsechfiliale.EquipementFilialeCompSechID;
+                compresseurSecheurFiliale.PrixAcquisition = compsechfiliale.PrixAcquisition;
+                compresseurSecheurFiliale.DateAcquisition = compsechfiliale.DateAcquisition;
+                compresseurSecheurFiliale.NumSerie = compsechfiliale.NumSerie;
+                compresseurSecheurFiliale.EFID = compsechfiliale.EFID;
+
+                CompresseurFiliale.Add(compresseurSecheurFiliale);
+            }
+            return CompresseurFiliale;
+        }
+
     }
 }
 
