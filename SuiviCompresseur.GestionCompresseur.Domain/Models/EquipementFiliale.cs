@@ -22,6 +22,8 @@ namespace SuiviCompresseur.GestionCompresseur.Domain.Models
      //   public int NumSerie { get; set; }
         public bool Active { get; set; }
 
+       
+       
         public Equipement Equipement { get; set; }
         public virtual ICollection<Consommable>Consommables { get; set; }
         public virtual ICollection<Fiche_Suivi> Fiche_Suivis { get; set; }

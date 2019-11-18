@@ -19,6 +19,7 @@ using SuiviCompresseur.GestionCompresseur.Domain.Commands.ficheSuivi;
 using Microsoft.Extensions.Primitives;
 using System.IO;
 using System.Net.Http.Headers;
+using SuiviCompresseur.GestionCompresseur.Domain.Enum;
 //using SuiviCompresseur.GestionCompresseur.Domain.Queries.Fiche_SuiviQueries;
 //using SuiviCompresseur.GestionCompresseur.Domain.Commands.Fiche_SuiviCommands;
 
@@ -90,13 +91,13 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
             StringValues FraisEntretienReparation;
             StringValues Date;
             StringValues Etat;
-            StringValues FrequenceEentretienDeshuileur;
+            StringValues PointDeRoseeDuSecheur;
             StringValues THuileC;
             StringValues TempsArret;
             StringValues Nbre_Heurs_Total;
             StringValues TSecheurC;
             StringValues Remarques;
-            StringValues PriseCompteur;
+            StringValues PriseCompteurDernierEntretien;
             StringValues Nbre_Heurs_Charge;
             StringValues Index_Electrique;
 
@@ -106,12 +107,12 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
             Request.Form.TryGetValue("FraisEntretienReparation", out FraisEntretienReparation);
             Request.Form.TryGetValue("Date", out Date);
             Request.Form.TryGetValue("Etat", out Etat);
-            Request.Form.TryGetValue("FrequenceEentretienDeshuileur", out FrequenceEentretienDeshuileur);
+            Request.Form.TryGetValue("FrequenceEentretienDeshuileur", out PointDeRoseeDuSecheur);
             Request.Form.TryGetValue("THuileC", out THuileC);
             Request.Form.TryGetValue("TempsArret", out TempsArret);
             Request.Form.TryGetValue("Nbre_Heurs_Total", out Nbre_Heurs_Total);
             Request.Form.TryGetValue("Remarques", out Remarques);
-            Request.Form.TryGetValue("PriseCompteur", out PriseCompteur);
+            Request.Form.TryGetValue("PriseCompteurDernierEntretien", out PriseCompteurDernierEntretien);
             Request.Form.TryGetValue("Nbre_Heurs_Charge", out Nbre_Heurs_Charge);
             Request.Form.TryGetValue("Index_Electrique", out Index_Electrique);
             Request.Form.TryGetValue("TSecheurC", out TSecheurC);
@@ -119,17 +120,17 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
             var fiche_Suivi = new Fiche_Suivi()
             {
                 EquipementFilialeID  = Guid.Parse(EquipementFilialeID ),
-                CourantAbsorbePhase = Convert.ToInt32(CourantAbsorbePhase),
+                //CourantAbsorbePhase = Convert.ToInt32(CourantAbsorbePhase),
                 FraisEntretienReparation = Convert.ToInt32(FraisEntretienReparation),
                 Date = Convert.ToDateTime(Date),
                 Etat = ConvertFromStringToListeEtat(Etat),
-                FrequenceEentretienDeshuileur = FrequenceEentretienDeshuileur,
+                PointDeRoseeDuSecheur = PointDeRoseeDuSecheur,
                 THuileC = Convert.ToDouble(THuileC),
                 TempsArret = Convert.ToDouble(TempsArret),
                 Nbre_Heurs_Total = Convert.ToInt32(Nbre_Heurs_Total),
                 TSecheurC = TSecheurC,
                 Remarques = Remarques,
-                PriseCompteur = Convert.ToDouble(PriseCompteur),
+                PriseCompteurDernierEntretien = Convert.ToInt32(PriseCompteurDernierEntretien),
                 Nbre_Heurs_Charge = Convert.ToInt32(Nbre_Heurs_Charge),
                 Index_Electrique = Convert.ToInt32(Index_Electrique),
             };

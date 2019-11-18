@@ -15,7 +15,10 @@ namespace SuiviCompresseur.GestionCompresseur.Domain.Models
         public DateTime DateAcquisition { get; set; }
         public int NumSerie { get; set; }
 
-
+        //
+        public bool HaveDebitMetre { get; set; }
+        public bool HaveElectricCounter { get; set; }
+        //
         public Guid EFID { get; set; }
         public EquipementFiliale EquipementFiliale { get; set; }
     }
