@@ -14,7 +14,7 @@
 
 //        public CreationDoneEvent(Guid fournisseurID, string nom, string adresse, string email)
 //        {
-//            FournisseurID = fournisseurID;
+//            FournisseurID =  fournisseurID;
 //            Nom = nom;
 //            Adresse = adresse;
 //            Email = email;
