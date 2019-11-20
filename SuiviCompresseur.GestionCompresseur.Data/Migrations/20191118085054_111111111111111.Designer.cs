@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SuiviCompresseur.GestionCompresseur.Data.Context;
 
 namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
 {
     [DbContext(typeof(CompresseurDbContext))]
-    partial class CompresseurDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191118085054_111111111111111")]
+    partial class _111111111111111
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -223,8 +225,6 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
                 {
                     b.Property<Guid>("GRhID")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<decimal>("ChargesMensuelles");
 
                     b.Property<DateTime>("Date");
 

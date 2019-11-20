@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SuiviCompresseur.GestionCompresseur.Data.Context;
 
 namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
 {
     [DbContext(typeof(CompresseurDbContext))]
-    partial class CompresseurDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191116164019_fr attachement")]
+    partial class frattachement
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,6 +39,8 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
                     b.Property<Guid?>("EntretienReservoirID");
 
                     b.Property<Guid?>("FicheSuiviID");
+
+                    b.Property<Guid?>("FournisseurID");
 
                     b.HasKey("AttachmentId");
 
@@ -223,8 +227,6 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
                 {
                     b.Property<Guid>("GRhID")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<decimal>("ChargesMensuelles");
 
                     b.Property<DateTime>("Date");
 
