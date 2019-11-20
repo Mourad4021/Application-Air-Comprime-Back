@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SuiviCompresseur.GestionCompresseur.Data.Context;
 
 namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
 {
     [DbContext(typeof(CompresseurDbContext))]
-    partial class CompresseurDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191118184337_gfgm")]
+    partial class gfgm
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -205,8 +207,6 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
                     b.Property<int>("Nbre_Heurs_Charge");
 
                     b.Property<int>("Nbre_Heurs_Total");
-
-                    b.Property<int>("NombreDeJoursOuvrablesDuMois");
 
                     b.Property<int>("NombreHeuresProductionUsineLeJourPrecedent");
 

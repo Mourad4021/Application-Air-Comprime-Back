@@ -15,6 +15,7 @@ using SuiviCompresseur.Gestion.Responsable.Aplication.Models;
 using SuiviCompresseur.Gestion.Responsable.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using SuiviCompresseur.Gestion.Responsable.Data.Context;
 
 namespace SuiviCompresseur.GestionResponsable.Api.Controllers
 {
@@ -26,11 +27,12 @@ namespace SuiviCompresseur.GestionResponsable.Api.Controllers
         private readonly IFilialeService _filialeService;
 
         private readonly IGenericRepositoryResponsable<Filiale> _db;
+        private readonly Gestion_Responsable_DBContext _responsableContext;
 
-
-        public FilialeController(IFilialeService filialeService, IGenericRepositoryResponsable<Filiale> db)
+        public FilialeController(IFilialeService filialeService, IGenericRepositoryResponsable<Filiale> db, Gestion_Responsable_DBContext responsableContext)
         {
-            _filialeService = filialeService;
+            _responsableContext = responsableContext;
+              _filialeService = filialeService;
             _db = db;
         }
 
@@ -42,10 +44,16 @@ namespace SuiviCompresseur.GestionResponsable.Api.Controllers
         {
             return _filialeService.GetFiliales();
         }
+        [HttpGet("active")]
+        public async Task<IEnumerable<Filiale>> GetActiveFiliale()
+        {
+            IEnumerable<Filiale> listActiveFiliale = _responsableContext.Filiale.Where(x => x.Active == true);
+            return listActiveFiliale;
+        }
 
         // GET api/Filiale/5
         //[AllowAnonymous]
-      //hajer//  [Authorize(Roles = "Editors , TotalControl , LimitedAccess")]
+        //hajer//  [Authorize(Roles = "Editors , TotalControl , LimitedAccess")]
         [HttpGet("{id}")]
         public Task<Filiale> Get1(Guid id)
         {
