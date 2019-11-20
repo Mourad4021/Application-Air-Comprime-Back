@@ -184,6 +184,8 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
                 equip_Filiales_Comp_Sech.PrixAcquisition = compresseurSecheurFiliale.PrixAcquisition;
                 equip_Filiales_Comp_Sech.DateAcquisition = compresseurSecheurFiliale.DateAcquisition;
                 equip_Filiales_Comp_Sech.EquipementFilialeCompSechID = compresseurSecheurFiliale.EquipementFilialeCompSechID;
+                equip_Filiales_Comp_Sech.HaveDebitMetre = compresseurSecheurFiliale.HaveDebitMetre;
+                equip_Filiales_Comp_Sech.HaveElectricCounter = compresseurSecheurFiliale.HaveElectricCounter;
 
                 PutEquip_Filiales_Comp_Sech(equip_Filiales_Comp_Sech.EquipementFilialeCompSechID, equip_Filiales_Comp_Sech);
 
@@ -247,7 +249,8 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
                 compresseurSecheurFiliale.DateAcquisition = compsechfiliale.DateAcquisition;
                 compresseurSecheurFiliale.NumSerie = compsechfiliale.NumSerie;
                 compresseurSecheurFiliale.EFID = compsechfiliale.EFID;
-
+                compresseurSecheurFiliale.HaveDebitMetre = compsechfiliale.HaveDebitMetre;
+                compresseurSecheurFiliale.HaveElectricCounter = compsechfiliale.HaveElectricCounter;
                 CompresseurSecheurFiliale.Add(compresseurSecheurFiliale);
             }
             return CompresseurSecheurFiliale;
@@ -370,6 +373,8 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
                 compresseurSecheurFiliale.DateAcquisition = compsechfiliale.DateAcquisition;
                 compresseurSecheurFiliale.NumSerie = compsechfiliale.NumSerie;
                 compresseurSecheurFiliale.EFID = compsechfiliale.EFID;
+                compresseurSecheurFiliale.HaveDebitMetre = compsechfiliale.HaveDebitMetre;
+                compresseurSecheurFiliale.HaveElectricCounter = compsechfiliale.HaveElectricCounter;
 
                 CompresseurFiliale.Add(compresseurSecheurFiliale);
             }
