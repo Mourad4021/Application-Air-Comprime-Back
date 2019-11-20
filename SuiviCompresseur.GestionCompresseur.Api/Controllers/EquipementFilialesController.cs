@@ -296,6 +296,7 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
                 EquipementFiliale.FilialeID = item.FilialeID;
                 EquipementFiliale.Nom = item.Nom;
                 EquipementFiliale.Active = item.Active;
+                
 
 
                 equipementFiliale.Add(EquipementFiliale);
@@ -380,6 +381,25 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
             }
             return CompresseurFiliale;
         }
+        // GET: api/EquipementFiliales/CompresseursFilialesParFiliale
+        [AllowAnonymous]
+        [HttpGet("CompresseursFilialesParFiliale")]
+        public async Task<IEnumerable<CompresseurSecheurFiliale>> GetActiveCompresseursFilialeParFiliale(Guid filialeID)
+        {
+            List<CompresseurSecheurFiliale> compresseurSecheurFilialesNEW = new List<CompresseurSecheurFiliale>();
+            IEnumerable<CompresseurSecheurFiliale> compresseurSecheurFiliales = await this.GetActiveCompresseursFiliale();
+            foreach (var item in compresseurSecheurFiliales)
+            {
+                if (item.FilialeID== filialeID)
+                {
+                    compresseurSecheurFilialesNEW.Add(item);
+                }
+            }
+            return compresseurSecheurFilialesNEW;
+        }
+
+
+
 
     }
 }
