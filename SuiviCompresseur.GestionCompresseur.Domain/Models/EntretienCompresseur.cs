@@ -17,5 +17,6 @@ namespace SuiviCompresseur.GestionCompresseur.Domain.Models
         public DateTime DateDernierEntretien { get; set; }
         public int ValeurCompteurProchainEntretien { get; set; }
         public string Commentaires { get; set; }
+      //  public bool active { get; set; }
     }
 }

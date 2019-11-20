@@ -99,5 +99,7 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
         public async Task<string> DeleteEntretienCompresseur(Guid id) =>
             await mediator.Send(new RemoveGenericCommand<EntretienCompresseur>(id));
 
+
+
     }
 }
