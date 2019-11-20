@@ -14,11 +14,11 @@ namespace SuiviCompresseur.GestionCompresseur.Domain.Models
         public EquipementFiliale EquipementFiliale { get; set; }
            
         public int ConsommationComp { get; set; }
-        [Required]
+       
  
         public decimal PrixUnitaire { get; set; }
-        [Required]
-        [DataType(DataType.Date)]
+        public Boolean Active { get; set; }
+
         public DateTime Date { get; set; }
         public decimal FraisElectriciteMensuel { get; set; }
         
