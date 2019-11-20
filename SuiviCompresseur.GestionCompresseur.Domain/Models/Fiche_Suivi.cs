@@ -30,12 +30,13 @@ namespace SuiviCompresseur.GestionCompresseur.Domain.Models
         //public double CourantAbsorbePhase { get; set; }
         
             
-            //champ  ajouter le réunion de 15/11/2019
+        //champ  ajouter le réunion de 15/11/2019
         public int Index_Debitmetre{ get; set; } //
         public string PointDeRoseeDuSecheur { get; set; } //
         public ListeTypeEntretien TypeDernierEntretien { get; set; }
         public int PriseCompteurDernierEntretien { get; set; }
         public int NombreHeuresProductionUsineLeJourPrecedent { get; set; }
+        public int NombreDeJoursOuvrablesDuMois { get; set; }
         //
         public double FraisEntretienReparation { get; set; }
        

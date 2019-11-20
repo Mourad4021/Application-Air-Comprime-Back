@@ -204,6 +204,8 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
 
                     b.Property<int>("Nbre_Heurs_Total");
 
+                    b.Property<int>("NombreDeJoursOuvrablesDuMois");
+
                     b.Property<int>("NombreHeuresProductionUsineLeJourPrecedent");
 
                     b.Property<string>("PointDeRoseeDuSecheur");
