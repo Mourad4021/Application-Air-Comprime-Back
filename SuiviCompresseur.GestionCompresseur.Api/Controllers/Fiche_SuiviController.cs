@@ -57,6 +57,50 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
 
             await mediator.Send(new GetGenericQuery<Fiche_Suivi>(id));
 
+
+        // GET: api/Fiche_Suivis
+        [AllowAnonymous]
+        [HttpGet("triM/{last}")]
+        public IOrderedQueryable<Fiche_Suivi> GetAllOG(int last)
+        {
+            DateTime month = DateTime.Now;
+            DateTime lastMonthDate;
+            int annee = month.Year;
+            int mois = month.Month - 1;
+            if (mois == 0)
+            {
+                mois = 12;
+                annee--;
+            }
+            int mois2 = mois - last;
+            int annee2 = annee;
+            if (mois2 == 0)
+            {
+                mois2 = 12;
+                annee2--;
+            }
+            int numberOfDays = DateTime.DaysInMonth(annee, mois);
+            int numberOfDays2 = DateTime.DaysInMonth(annee2, mois2);
+            DateTime date = new DateTime(annee, mois, numberOfDays);
+            DateTime date2 = new DateTime(annee2, mois2, numberOfDays2);
+            //return _context.Fiche_Suivis.Where(x => x.Date.CompareTo(date)>0).OrderBy(p => p.Date).GroupBy(g => g.EquipementFilialeID);
+            if (last == 0)
+            {
+                return _context.Fiche_Suivis.Where(x => x.Date.CompareTo(date) > 0).OrderBy(p => p.Date).OrderBy(g => g.EquipementFilialeID).OrderBy(h => h.EquipementFiliale.FilialeID);
+            }
+            else
+            {
+                date = new DateTime(annee, mois, 1);
+                date2 = new DateTime(annee, mois, numberOfDays);
+                return _context.Fiche_Suivis.Where(x => x.Date.CompareTo(date2) <= 0 && x.Date.CompareTo(date) >= 0).OrderBy(p => p.Date).OrderBy(g => g.EquipementFilialeID).OrderBy(h => h.EquipementFiliale.FilialeID);
+            }
+
+
+
+        }
+
+
+
         [AllowAnonymous]
         // PUT: api/Fiche_Suivis/5
         //hajer// [Authorize(Roles = "TotalControl , LimitedAccess")]
@@ -87,7 +131,7 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
             // fiche_SuiviFormFile.
 
             StringValues EquipementFilialeID;
-            StringValues CourantAbsorbePhase;
+            StringValues Index_Debitmetre;
             StringValues FraisEntretienReparation;
             StringValues Date;
             StringValues Etat;
@@ -100,27 +144,38 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
             StringValues PriseCompteurDernierEntretien;
             StringValues Nbre_Heurs_Charge;
             StringValues Index_Electrique;
+            StringValues TypeDernierEntretien;
+            StringValues NombreHeuresProductionUsineLeJourPrecedent;
+            StringValues NombreDeJoursOuvrablesDuMois;
+       
 
             //
-            Request.Form.TryGetValue("equipementFilialeID", out EquipementFilialeID );
-            Request.Form.TryGetValue("CourantAbsorbePhase", out CourantAbsorbePhase);
-            Request.Form.TryGetValue("FraisEntretienReparation", out FraisEntretienReparation);
             Request.Form.TryGetValue("Date", out Date);
-            Request.Form.TryGetValue("Etat", out Etat);
-            Request.Form.TryGetValue("FrequenceEentretienDeshuileur", out PointDeRoseeDuSecheur);
-            Request.Form.TryGetValue("THuileC", out THuileC);
-            Request.Form.TryGetValue("TempsArret", out TempsArret);
+            Request.Form.TryGetValue("EquipementFilialeID", out EquipementFilialeID );
             Request.Form.TryGetValue("Nbre_Heurs_Total", out Nbre_Heurs_Total);
-            Request.Form.TryGetValue("Remarques", out Remarques);
-            Request.Form.TryGetValue("PriseCompteurDernierEntretien", out PriseCompteurDernierEntretien);
             Request.Form.TryGetValue("Nbre_Heurs_Charge", out Nbre_Heurs_Charge);
+            Request.Form.TryGetValue("TempsArret", out TempsArret);
+            Request.Form.TryGetValue("Etat", out Etat);
+            Request.Form.TryGetValue("PointDeRoseeDuSecheur", out PointDeRoseeDuSecheur);
+            Request.Form.TryGetValue("Index_Debitmetre", out Index_Debitmetre);
+            Request.Form.TryGetValue("FraisEntretienReparation", out FraisEntretienReparation);
+            Request.Form.TryGetValue("PriseCompteurDernierEntretien", out PriseCompteurDernierEntretien);
+            Request.Form.TryGetValue("Remarques", out Remarques);
+            Request.Form.TryGetValue("THuileC", out THuileC);
             Request.Form.TryGetValue("Index_Electrique", out Index_Electrique);
-            Request.Form.TryGetValue("TSecheurC", out TSecheurC);
+            Request.Form.TryGetValue("TypeDernierEntretien", out TypeDernierEntretien);
+            Request.Form.TryGetValue("NombreHeuresProductionUsineLeJourPrecedent", out NombreHeuresProductionUsineLeJourPrecedent);
+            Request.Form.TryGetValue("NombreDeJoursOuvrablesDuMois", out NombreDeJoursOuvrablesDuMois);
+
+            if (Request.Form.TryGetValue("NombreDeJoursOuvrablesDuMois", out NombreDeJoursOuvrablesDuMois)== false)
+            {
+                NombreDeJoursOuvrablesDuMois = "0";
+            }
+            
 
             var fiche_Suivi = new Fiche_Suivi()
             {
-                EquipementFilialeID  = Guid.Parse(EquipementFilialeID ),
-                //CourantAbsorbePhase = Convert.ToInt32(CourantAbsorbePhase),
+                EquipementFilialeID  = Guid.Parse(EquipementFilialeID ),   
                 FraisEntretienReparation = Convert.ToInt32(FraisEntretienReparation),
                 Date = Convert.ToDateTime(Date),
                 Etat = ConvertFromStringToListeEtat(Etat),
@@ -128,11 +183,14 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
                 THuileC = Convert.ToDouble(THuileC),
                 TempsArret = Convert.ToDouble(TempsArret),
                 Nbre_Heurs_Total = Convert.ToInt32(Nbre_Heurs_Total),
-                TSecheurC = TSecheurC,
                 Remarques = Remarques,
                 PriseCompteurDernierEntretien = Convert.ToInt32(PriseCompteurDernierEntretien),
                 Nbre_Heurs_Charge = Convert.ToInt32(Nbre_Heurs_Charge),
                 Index_Electrique = Convert.ToInt32(Index_Electrique),
+                TypeDernierEntretien= ConvertFromStringToTypeEntretien(TypeDernierEntretien),
+                NombreHeuresProductionUsineLeJourPrecedent= Convert.ToInt32(NombreHeuresProductionUsineLeJourPrecedent),
+                NombreDeJoursOuvrablesDuMois= Convert.ToInt32(NombreDeJoursOuvrablesDuMois),
+                Index_Debitmetre= Convert.ToInt32(Index_Debitmetre)
             };
             //Request.Form.Files
             string testval = validationFiche_Suivi.testPost(fiche_Suivi);
@@ -220,6 +278,24 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
                     break;
                 default:
                     return ListeEtat.En_panne ;
+                    break;
+            }
+        }
+        ListeTypeEntretien ConvertFromStringToTypeEntretien(string etat)
+        {
+            switch (etat)
+            {
+                case "A":
+                    return ListeTypeEntretien.A;
+                    break;
+                case "B":
+                    return ListeTypeEntretien.B;
+                    break;
+                case "C":
+                    return ListeTypeEntretien.C;
+                    break;
+                default:
+                    return ListeTypeEntretien.D;
                     break;
             }
         }
