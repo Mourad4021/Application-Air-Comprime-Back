@@ -37,8 +37,8 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Repository
                 if (value <= 0)
                 {
 
-                    //if (fiche_Suivi.Date.DayOfWeek != DayOfWeek.Saturday && fiche_Suivi.Date.DayOfWeek != DayOfWeek.Sunday)
-                    //{
+                    ////if (fiche_Suivi.Date.DayOfWeek != DayOfWeek.Saturday && fiche_Suivi.Date.DayOfWeek != DayOfWeek.Sunday)
+                   // //{
                         var exist = _context.Fiche_Suivis.Where(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID).FirstOrDefault();
                         if (exist != null)
                         {
