@@ -1,4 +1,3 @@
-
 using SuiviCompresseur.GestionCompresseur.Data.Context;
 using SuiviCompresseur.GestionCompresseur.Domain.Models;
 using System;
@@ -8,7 +7,7 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Repository
 {
     public class ValidationContraint
     {
-       private readonly CompresseurDbContext _context;
+        private readonly CompresseurDbContext _context;
         public ValidationContraint(CompresseurDbContext context)
         {
             _context = context;
@@ -27,8 +26,8 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Repository
                 DateTime.Compare(fiche_Suivi.Date, c.Date) < 0).Max(c => c.Index_Electrique);
                 maxtothours = _context.Fiche_Suivis.Where(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID &&
                DateTime.Compare(fiche_Suivi.Date, c.Date) < 0).Max(c => c.Nbre_Heurs_Total);
-                maxchargehours= _context.Fiche_Suivis.Where(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID &&
-                DateTime.Compare(fiche_Suivi.Date, c.Date) < 0).Max(c => c.Nbre_Heurs_Charge);
+                maxchargehours = _context.Fiche_Suivis.Where(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID &&
+                 DateTime.Compare(fiche_Suivi.Date, c.Date) < 0).Max(c => c.Nbre_Heurs_Charge);
             }
             string datedouble = TestDoubleDate(fiche_Suivi);
             int firtM = 0;
@@ -95,7 +94,7 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Repository
                     {
 
 
-                      
+
                         if (fiche_Suivi.Index_Electrique >= max)
                         {
                             if (fiche_Suivi.Nbre_Heurs_Total >= maxtothours)
@@ -117,9 +116,9 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Repository
                         else
                             return "Index lower than the previous index";
                     }
-                   
-               
-                else
+
+
+                    else
                         return "Total number of hours less than the number of hours in charge";
                 }
                 else
@@ -137,78 +136,78 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Repository
             //{
 
 
-                //int value = DateTime.Compare(fiche_Suivi.Date, DateTime.Now);
-                //if (value <= 0)
-                //{
+            //int value = DateTime.Compare(fiche_Suivi.Date, DateTime.Now);
+            //if (value <= 0)
+            //{
 
-                    //if (fiche_Suivi.Date.DayOfWeek != DayOfWeek.Saturday && fiche_Suivi.Date.DayOfWeek != DayOfWeek.Sunday)
+            //if (fiche_Suivi.Date.DayOfWeek != DayOfWeek.Saturday && fiche_Suivi.Date.DayOfWeek != DayOfWeek.Sunday)
 
-                    //{
+            //{
 
-                    //    DateTime date2;
-                    //    int annee = fiche_Suivi.Date.Year;
-                    //    int mois = fiche_Suivi.Date.Month - 1;
-                    //    if (mois == 0)
-                    //    {
-                    //        mois = 12;
-                    //        annee--;
-                    //    }
-                    //    int last = DateTime.DaysInMonth(annee, mois);
-                    //    DateTime date = new DateTime(annee, mois, last);
+            //    DateTime date2;
+            //    int annee = fiche_Suivi.Date.Year;
+            //    int mois = fiche_Suivi.Date.Month - 1;
+            //    if (mois == 0)
+            //    {
+            //        mois = 12;
+            //        annee--;
+            //    }
+            //    int last = DateTime.DaysInMonth(annee, mois);
+            //    DateTime date = new DateTime(annee, mois, last);
 
-                    //    if (date.DayOfWeek == DayOfWeek.Saturday)
-                    //    {
-                    //        date2 = new DateTime(annee, mois, last - 1);
-                    //    }
-                    //    else if (date.DayOfWeek == DayOfWeek.Sunday)
-                    //    {
-                    //        date2 = new DateTime(annee, mois, last - 2);
-                    //    }
-                    //    else
-                    //    {
-                    //        date2 = new DateTime(annee, mois, last);
-                    //    }
-                    //    var res = _context.Fiche_Suivis.Where(c => c.Date == date2).FirstOrDefault();
-                    //    if (res != null)
-                    //        result = "true";
-                    //    else
-                    //        result = "The last day of the previous month not completed";
+            //    if (date.DayOfWeek == DayOfWeek.Saturday)
+            //    {
+            //        date2 = new DateTime(annee, mois, last - 1);
+            //    }
+            //    else if (date.DayOfWeek == DayOfWeek.Sunday)
+            //    {
+            //        date2 = new DateTime(annee, mois, last - 2);
+            //    }
+            //    else
+            //    {
+            //        date2 = new DateTime(annee, mois, last);
+            //    }
+            //    var res = _context.Fiche_Suivis.Where(c => c.Date == date2).FirstOrDefault();
+            //    if (res != null)
+            //        result = "true";
+            //    else
+            //        result = "The last day of the previous month not completed";
 
-                    //}
-                //    else
-                //        result = "Week-end";
-                //}
-                //else
-                //    result = "Date superior to the date of today";
+            //}
+            //    else
+            //        result = "Week-end";
+            //}
+            //else
+            //    result = "Date superior to the date of today";
 
 
-                //if (result == "true")
-                //{
-                    int max = _context.Fiche_Suivis.Where(c => (c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID) && (c.Date < fiche_Suivi.Date)).Max(c => c.Index_Electrique);
-                    if (fiche_Suivi.Nbre_Heurs_Charge < fiche_Suivi.Nbre_Heurs_Total)
+            //if (result == "true")
+            //{
+            int max = _context.Fiche_Suivis.Where(c => (c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID) && (c.Date < fiche_Suivi.Date)).Max(c => c.Index_Electrique);
+            if (fiche_Suivi.Nbre_Heurs_Charge < fiche_Suivi.Nbre_Heurs_Total)
+            {
+                if (fiche_Suivi.Index_Electrique >= max)
+                {
                     {
-                        if (fiche_Suivi.Index_Electrique >= max)
+                        var entity = _context.Fiche_Suivis.Find(id);
+                        if (entity != null)
                         {
-                            {
-                                var entity = _context.Fiche_Suivis.Find(id);
-                                if (entity != null)
-                                {
-                                    return "true";
-                                }
-                                else
-                                {
-                                    return "Fiche suivi don't exist";
-                                }
-                            }
+                            return "true";
                         }
                         else
-                            return "Index lower than the previous index";
+                        {
+                            return "Fiche suivi don't exist";
+                        }
                     }
-                    else
-                        return "Total number of hours less than the number of hours in charge";
-                //}
-                //else
-                    //return result;
+                }
+                else
+                    return "Index lower than the previous index";
+            }
+            else
+                return "Total number of hours less than the number of hours in charge";
+            //}
+            //else
+            //return result;
             //}
             //else return datedouble;
         }
