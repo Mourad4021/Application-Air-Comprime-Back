@@ -1,4 +1,5 @@
 ﻿using SuiviCompresseur.GestionCompresseur.Domain.DTOs;
+using SuiviCompresseur.GestionCompresseur.Domain.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -25,11 +26,20 @@ namespace SuiviCompresseur.GestionCompresseur.Domain.Models
         public int Index_Electrique { set; get; }
         public double TempsArret { get; set; }
         public ListeEtat Etat { get; set; }
-        public string FrequenceEentretienDeshuileur { get; set; }
-        public double CourantAbsorbePhase { get; set; }
-
+    
+        //public double CourantAbsorbePhase { get; set; }
+        
+            
+        //champ  ajouter le réunion de 15/11/2019
+        public int Index_Debitmetre{ get; set; } //
+        public string PointDeRoseeDuSecheur { get; set; } //
+        public ListeTypeEntretien TypeDernierEntretien { get; set; }
+        public int PriseCompteurDernierEntretien { get; set; }
+        public int NombreHeuresProductionUsineLeJourPrecedent { get; set; }
+        public int NombreDeJoursOuvrablesDuMois { get; set; }
+        //
         public double FraisEntretienReparation { get; set; }
-        public double PriseCompteur { get; set; }
+       
         [Required]
         public double THuileC { get; set; }
         public string TSecheurC { get; set; }

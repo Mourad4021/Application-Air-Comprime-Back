@@ -52,6 +52,8 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
                     b.Property<Guid>("ConsommableID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<bool>("Active");
+
                     b.Property<int>("ConsommationComp");
 
                     b.Property<DateTime>("Date");
@@ -126,6 +128,10 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
 
                     b.Property<Guid>("EFID");
 
+                    b.Property<bool>("HaveDebitMetre");
+
+                    b.Property<bool>("HaveElectricCounter");
+
                     b.Property<int>("NumSerie");
 
                     b.Property<double>("PrixAcquisition");
@@ -184,8 +190,6 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
                     b.Property<Guid>("FicheSuiviID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<double>("CourantAbsorbePhase");
-
                     b.Property<DateTime>("Date");
 
                     b.Property<Guid>("EquipementFilialeID");
@@ -194,7 +198,7 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
 
                     b.Property<double>("FraisEntretienReparation");
 
-                    b.Property<string>("FrequenceEentretienDeshuileur");
+                    b.Property<int>("Index_Debitmetre");
 
                     b.Property<int>("Index_Electrique");
 
@@ -202,7 +206,13 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
 
                     b.Property<int>("Nbre_Heurs_Total");
 
-                    b.Property<double>("PriseCompteur");
+                    b.Property<int>("NombreDeJoursOuvrablesDuMois");
+
+                    b.Property<int>("NombreHeuresProductionUsineLeJourPrecedent");
+
+                    b.Property<string>("PointDeRoseeDuSecheur");
+
+                    b.Property<int>("PriseCompteurDernierEntretien");
 
                     b.Property<string>("Remarques");
 
@@ -211,6 +221,8 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
                     b.Property<string>("TSecheurC");
 
                     b.Property<double>("TempsArret");
+
+                    b.Property<int>("TypeDernierEntretien");
 
                     b.HasKey("FicheSuiviID");
 

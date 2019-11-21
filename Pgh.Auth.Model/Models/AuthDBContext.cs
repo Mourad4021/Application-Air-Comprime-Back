@@ -35,7 +35,8 @@ namespace Pgh.Auth.Model.Models
 
 
                optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Database=Pgh.Authentification;Trusted_Connection=True;MultipleActiveResultSets=true");
-              //hajer // optionsBuilder.UseSqlServer(@"Server=192.168.160.57;Database=Pgh.GestionCompresseur.AuthDB;uid=sa;pwd=PgHSqL2016;MultipleActiveResultSets=True");
+               //optionsBuilder.UseSqlServer(@"Data Source=ABELHADJ1;Database=Pgh.Authentification;Trusted_Connection=True;MultipleActiveResultSets=true");
+             
 
             }
         }

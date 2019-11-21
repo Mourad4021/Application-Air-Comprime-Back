@@ -17,13 +17,18 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Repository
         {
             string result;
             int max = 0;
-
+            int maxtothours = 0;
+            int maxchargehours = 0;
             var maxpossible = _context.Fiche_Suivis.Where(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID &&
             DateTime.Compare(fiche_Suivi.Date, c.Date) < 0).FirstOrDefault();
             if (maxpossible != null)
             {
                 max = _context.Fiche_Suivis.Where(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID &&
                 DateTime.Compare(fiche_Suivi.Date, c.Date) < 0).Max(c => c.Index_Electrique);
+                maxtothours = _context.Fiche_Suivis.Where(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID &&
+               DateTime.Compare(fiche_Suivi.Date, c.Date) < 0).Max(c => c.Nbre_Heurs_Total);
+                maxchargehours= _context.Fiche_Suivis.Where(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID &&
+                DateTime.Compare(fiche_Suivi.Date, c.Date) < 0).Max(c => c.Nbre_Heurs_Charge);
             }
             string datedouble = TestDoubleDate(fiche_Suivi);
             int firtM = 0;
@@ -88,14 +93,33 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Repository
                 {
                     if (fiche_Suivi.Nbre_Heurs_Charge < fiche_Suivi.Nbre_Heurs_Total)
                     {
+
+
+                      
                         if (fiche_Suivi.Index_Electrique >= max)
                         {
-                            return "true";
+                            if (fiche_Suivi.Nbre_Heurs_Total >= maxtothours)
+                            {
+                                if (fiche_Suivi.Nbre_Heurs_Charge >= maxchargehours)
+                                {
+                                    return "true";
+                                }
+                                else
+                                {
+                                    return "nbre heures total lower than the previous nbre heures total";
+                                }
+                            }
+                            else
+                            {
+                                return "nbre heures total lower than the previous nbre heures total";
+                            }
                         }
                         else
                             return "Index lower than the previous index";
                     }
-                    else
+                   
+               
+                else
                         return "Total number of hours less than the number of hours in charge";
                 }
                 else
@@ -218,5 +242,8 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Repository
             }
 
         }
+
     }
+
+
 }

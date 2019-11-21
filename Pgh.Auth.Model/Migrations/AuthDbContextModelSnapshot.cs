@@ -119,7 +119,7 @@ namespace Pgh.Auth.Model.Migrations
                     b.HasData(
                         new
                         {
-                            AppId = new Guid("7d84faba-eb47-4861-bfa3-816c9d341a15"),
+                            AppId = new Guid("89221138-254c-4212-b743-c4c1b2909fb8"),
                             AppCode = "0000",
                             AppDescription = "Cette application gérer l'authentification et des permissions des différents applications.",
                             AppDisplayName = "Gestion de l'authentification  des applications",
@@ -128,7 +128,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            AppId = new Guid("006097eb-0fa8-46a3-9e21-fd5c1c61a22b"),
+                            AppId = new Guid("5bf9211a-df6c-4f3f-a059-652fc2194f33"),
                             AppCode = "0001",
                             AppDescription = "Cette application gérer le processus d'analyse des échantillons par le labo Dick.",
                             AppDisplayName = "Gestion de laboratoire Dick",
@@ -137,7 +137,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            AppId = new Guid("5d5c79a2-e823-4a40-be1b-ecb54aa5f0a8"),
+                            AppId = new Guid("b1335dae-e24d-4066-b8ee-246cbdfbb634"),
                             AppCode = "0013",
                             AppDescription = "Mise a jour de l'ancienne application Laboratoir Dick.",
                             AppDisplayName = "Gestion de laboratoire Dick Elevage",
@@ -187,8 +187,8 @@ namespace Pgh.Auth.Model.Migrations
                     b.HasData(
                         new
                         {
-                            GrpId = new Guid("04b68613-032c-439b-9b4f-e803eb6a7f4e"),
-                            FkAppId = new Guid("7d84faba-eb47-4861-bfa3-816c9d341a15"),
+                            GrpId = new Guid("c0f011a4-dd60-4599-99d4-464b1272fe99"),
+                            FkAppId = new Guid("89221138-254c-4212-b743-c4c1b2909fb8"),
                             GrpDescription = "Administration Groupe for Authentication Application",
                             GrpDisplayName = "Administration Groupes",
                             GrpName = "AdministratorAuth",
@@ -196,8 +196,8 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            GrpId = new Guid("a5007005-07a5-4c03-9c18-73f318dda7e4"),
-                            FkAppId = new Guid("7d84faba-eb47-4861-bfa3-816c9d341a15"),
+                            GrpId = new Guid("70744253-0bd2-4a26-b549-be8568df9bdd"),
+                            FkAppId = new Guid("89221138-254c-4212-b743-c4c1b2909fb8"),
                             GrpDescription = "Readers Groupe for Authentication Application",
                             GrpDisplayName = "Readers Groupes",
                             GrpName = "ReadersAuth",
@@ -205,8 +205,8 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            GrpId = new Guid("fffdbf85-6e87-4de3-8790-4fba3a028e55"),
-                            FkAppId = new Guid("7d84faba-eb47-4861-bfa3-816c9d341a15"),
+                            GrpId = new Guid("e3459c31-dbff-4bc7-b7d8-974fb16d18f4"),
+                            FkAppId = new Guid("89221138-254c-4212-b743-c4c1b2909fb8"),
                             GrpDescription = "Editors Groupe for Authentication Application",
                             GrpDisplayName = "Editors Groupes",
                             GrpName = "EditorsAuth",
@@ -243,8 +243,8 @@ namespace Pgh.Auth.Model.Migrations
                     b.HasData(
                         new
                         {
-                            MenuId = new Guid("0c568f77-29e0-4a76-9278-13247f439a9e"),
-                            FkAppId = new Guid("7d84faba-eb47-4861-bfa3-816c9d341a15"),
+                            MenuId = new Guid("5d7d00c9-6243-453b-9300-58fc7b7d4e58"),
+                            FkAppId = new Guid("89221138-254c-4212-b743-c4c1b2909fb8"),
                             MenuDescription = "User setup menu.",
                             MenuDisplayName = "Users",
                             MenuName = "AuthUsers",
@@ -253,8 +253,8 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            MenuId = new Guid("45228d92-9b57-49c6-b1e1-6273f910937c"),
-                            FkAppId = new Guid("7d84faba-eb47-4861-bfa3-816c9d341a15"),
+                            MenuId = new Guid("ab922dcb-79f3-4bfc-9c89-c6b5383ef332"),
+                            FkAppId = new Guid("89221138-254c-4212-b743-c4c1b2909fb8"),
                             MenuDescription = "Permissions setup menu.",
                             MenuDisplayName = "Permissions",
                             MenuName = "AuthPermissions",
@@ -263,8 +263,8 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            MenuId = new Guid("54348b0f-3f5a-4ece-b1fb-d960715ad129"),
-                            FkAppId = new Guid("7d84faba-eb47-4861-bfa3-816c9d341a15"),
+                            MenuId = new Guid("53ad3bf3-5eba-454c-9090-d51927717cb9"),
+                            FkAppId = new Guid("89221138-254c-4212-b743-c4c1b2909fb8"),
                             MenuDescription = "Roles setup menu.",
                             MenuDisplayName = "Roles",
                             MenuName = "AuthRoles",
@@ -273,8 +273,8 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            MenuId = new Guid("81064b62-7721-42aa-8bf0-67117bd0ca0f"),
-                            FkAppId = new Guid("7d84faba-eb47-4861-bfa3-816c9d341a15"),
+                            MenuId = new Guid("57776049-9e03-4ab0-93d6-d82ceec46d7a"),
+                            FkAppId = new Guid("89221138-254c-4212-b743-c4c1b2909fb8"),
                             MenuDescription = "Applications setup menu.",
                             MenuDisplayName = "Applications",
                             MenuName = "AuthApplications",
@@ -283,8 +283,8 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            MenuId = new Guid("675314af-212c-4cc7-9f7f-1f91c3e3369a"),
-                            FkAppId = new Guid("7d84faba-eb47-4861-bfa3-816c9d341a15"),
+                            MenuId = new Guid("1cdbc617-e148-4cc1-846d-4f162e66ae88"),
+                            FkAppId = new Guid("89221138-254c-4212-b743-c4c1b2909fb8"),
                             MenuDescription = "Menus setup menu.",
                             MenuDisplayName = "Menus",
                             MenuName = "AuthMenus",
@@ -293,8 +293,8 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            MenuId = new Guid("e5f2b4f0-c976-47d3-97fe-870964ff3531"),
-                            FkAppId = new Guid("7d84faba-eb47-4861-bfa3-816c9d341a15"),
+                            MenuId = new Guid("1537cb14-9706-47be-a1cd-560ac9fdb98a"),
+                            FkAppId = new Guid("89221138-254c-4212-b743-c4c1b2909fb8"),
                             MenuDescription = "Groupes setup menu.",
                             MenuDisplayName = "Groupes",
                             MenuName = "AuthGroupes",
@@ -326,7 +326,7 @@ namespace Pgh.Auth.Model.Migrations
                     b.HasData(
                         new
                         {
-                            PermId = new Guid("5b30a049-0ed6-4e65-a571-db958ba2979b"),
+                            PermId = new Guid("d9bbc3ef-0cd0-4688-aee7-28ea203c7602"),
                             PermDescription = "Users Will Have the permission to add items",
                             PermDisplayName = "Add Items",
                             PermName = "AddItems",
@@ -334,7 +334,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            PermId = new Guid("5ac089b5-2c81-496c-bfa7-64b440d5209f"),
+                            PermId = new Guid("0b6add34-d44a-4197-9553-7950fddaf8c1"),
                             PermDescription = "Users Will Have Permission to edit Items.",
                             PermDisplayName = "Edit Items",
                             PermName = "EditItems",
@@ -342,7 +342,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            PermId = new Guid("66eac8ff-df76-4864-85af-1e45777f88fc"),
+                            PermId = new Guid("51bd26d3-2765-4d4d-bb12-323081faf3ed"),
                             PermDescription = "Users Will Have Permission to delete Elements.",
                             PermDisplayName = "Delete Items",
                             PermName = "DeleteItems",
@@ -350,7 +350,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            PermId = new Guid("0972105b-0624-4b70-8134-106927670252"),
+                            PermId = new Guid("1fc80226-5dd8-4dc1-b1fd-602376cf27ae"),
                             PermDescription = "Users Will Have Permission to View Items.",
                             PermDisplayName = "View Items",
                             PermName = "ViewItems",
@@ -358,7 +358,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            PermId = new Guid("d69dc2b1-fe23-492b-a9f7-f0f8cd919663"),
+                            PermId = new Guid("a8cd99c7-b339-485e-a747-be4f4472fdb7"),
                             PermDescription = "Users Will Have Permission to approve items.",
                             PermDisplayName = "Approve Items",
                             PermName = "ApproveItems",
@@ -366,7 +366,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            PermId = new Guid("c8ce40d9-ab3a-43b5-96cf-e337799b6749"),
+                            PermId = new Guid("de8f86f3-a5ba-4295-9378-2561193d7c79"),
                             PermDescription = "Users Will Have Permission to show versions.",
                             PermDisplayName = "Show Versions",
                             PermName = "ShowVersions",
@@ -374,7 +374,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            PermId = new Guid("1243ca02-d628-462e-8749-d84edb2afdc0"),
+                            PermId = new Guid("c7fb5a2e-a6f3-4779-9520-59470db130a6"),
                             PermDescription = "Users Will Have Permission to Delete versions.",
                             PermDisplayName = "Delete Versions",
                             PermName = "DeleteVersions",
@@ -382,7 +382,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            PermId = new Guid("371a6c85-c6e0-4107-85fb-8d82346911ee"),
+                            PermId = new Guid("5a3583d9-034b-48e2-8815-717114cf657e"),
                             PermDescription = "Users Will Have Permission to view application pages.",
                             PermDisplayName = "View application pages",
                             PermName = "ViewApplicationPages",
@@ -390,7 +390,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            PermId = new Guid("f0943f92-ce16-4b33-9726-d1188373ba3f"),
+                            PermId = new Guid("90d0882d-1646-43c6-b243-862e0078656e"),
                             PermDescription = "Users Will Have Permission to create groups.",
                             PermDisplayName = "Create Groups",
                             PermName = "CreateGroups",
@@ -398,7 +398,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            PermId = new Guid("fa548165-aa7e-4893-a62e-d229637dcc96"),
+                            PermId = new Guid("32b7cfae-4130-4d07-962a-783ec5658307"),
                             PermDescription = "Users Will Have Permission to view pages.",
                             PermDisplayName = "View Pages",
                             PermName = "ViewPages",
@@ -406,7 +406,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            PermId = new Guid("a2d317d2-22e1-408a-8462-f42c985f0212"),
+                            PermId = new Guid("ac65f7fc-f494-477f-9946-92ef63bc3fee"),
                             PermDescription = "Users Will Have Permission to edit users personal information.",
                             PermDisplayName = "Edit user's personal information",
                             PermName = "EditUserPersonalInformation",
@@ -414,7 +414,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            PermId = new Guid("386c1a06-5e41-4687-90ae-3c9fc745061b"),
+                            PermId = new Guid("b1bc9f48-a943-4564-822c-dc070b2fb2b9"),
                             PermDescription = "Users Will Have Permission to Manage personal views.",
                             PermDisplayName = "Manage personal views",
                             PermName = "ManagePersonalViews",
@@ -445,7 +445,7 @@ namespace Pgh.Auth.Model.Migrations
                     b.HasData(
                         new
                         {
-                            RoleId = new Guid("c8e8463f-f460-4ae9-a8fb-8eaaabc81b1b"),
+                            RoleId = new Guid("f722bd9a-03c2-45f9-be59-6106b92717e0"),
                             RoleDescription = "Total Control Default Groupe",
                             RoleDisplayName = "Total Control",
                             RoleName = "TotalControl",
@@ -453,7 +453,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            RoleId = new Guid("e2418633-f452-4877-807c-fbc1bd58de6c"),
+                            RoleId = new Guid("02420da9-1db8-425b-ba7e-cb88710ad90b"),
                             RoleDescription = "Design Groupe Default Groupe",
                             RoleDisplayName = "Design Groupe",
                             RoleName = "Design",
@@ -461,7 +461,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            RoleId = new Guid("eef95016-fae3-4832-ad95-0011407d0944"),
+                            RoleId = new Guid("fa2cc2dd-547a-418d-8273-cd3a0d30af0b"),
                             RoleDescription = "Editors Groupe Default Groupe",
                             RoleDisplayName = "Editors Groupe",
                             RoleName = "Editors",
@@ -469,7 +469,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            RoleId = new Guid("224ef755-1794-4629-bdd2-fcb1d9ea00bc"),
+                            RoleId = new Guid("79839a7a-8ad5-40f3-8d40-e313b7c836a4"),
                             RoleDescription = "Collaboration Default Groupe",
                             RoleDisplayName = "Collaboration Groupe",
                             RoleName = "Collaboration",
@@ -477,7 +477,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            RoleId = new Guid("4d6d732f-909d-4ebe-b98a-71f6dc074d6e"),
+                            RoleId = new Guid("c5f5ab50-a938-486a-88b5-bf97bef4bdfa"),
                             RoleDescription = "Readers Groupe Default Groupe",
                             RoleDisplayName = "Readers Groupe",
                             RoleName = "Readers",
@@ -485,7 +485,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            RoleId = new Guid("4e4f22c1-fd30-469b-ac5d-b22725619cac"),
+                            RoleId = new Guid("e41b1a8a-7a20-4799-aaee-b836dd28c4ae"),
                             RoleDescription = "Limited Access Default Groupe",
                             RoleDisplayName = "Limited Access",
                             RoleName = "LimitedAccess",
@@ -493,7 +493,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            RoleId = new Guid("aaa6e1a0-8534-4ec2-b9b3-f09df832df30"),
+                            RoleId = new Guid("f676ec19-cdb6-4d6c-9415-d8f51e75438f"),
                             RoleDescription = "Display Only Default Groupe",
                             RoleDisplayName = "Display Only Groupe",
                             RoleName = "DisplayOnly",
@@ -501,7 +501,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            RoleId = new Guid("efebdd55-5a1b-492e-b736-9062340a9fbc"),
+                            RoleId = new Guid("2dbf8533-9b2f-4443-a5b9-d66e435fcc1e"),
                             RoleDescription = "Approval Default Groupe",
                             RoleDisplayName = "Approval Groupe",
                             RoleName = "Approval",
@@ -509,7 +509,7 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            RoleId = new Guid("68d62329-3713-4ef4-b6f4-d2c2355aeca1"),
+                            RoleId = new Guid("b7492c1c-5268-43fd-bcee-c6227c0d863a"),
                             RoleDescription = "Restricted reading Default Groupe",
                             RoleDisplayName = "Restricted reading Groupe",
                             RoleName = "Restricted reading",
@@ -571,12 +571,12 @@ namespace Pgh.Auth.Model.Migrations
                     b.HasData(
                         new
                         {
-                            UsersId = new Guid("9a55047d-13cc-4c6b-82eb-6d4e740a4f9f"),
-                            UsersBirthDate = new DateTime(2019, 10, 31, 10, 43, 0, 306, DateTimeKind.Local).AddTicks(9671),
+                            UsersId = new Guid("26009217-051a-4a16-962d-2e88c311c086"),
+                            UsersBirthDate = new DateTime(2019, 11, 15, 15, 57, 47, 55, DateTimeKind.Local).AddTicks(781),
                             UsersCode = "00000000",
-                            UsersDateLeave = new DateTime(2019, 10, 31, 10, 43, 0, 307, DateTimeKind.Local).AddTicks(7133),
+                            UsersDateLeave = new DateTime(2019, 11, 15, 15, 57, 47, 55, DateTimeKind.Local).AddTicks(9376),
                             UsersGenderCode = "M",
-                            UsersJoinDate = new DateTime(2019, 10, 31, 10, 43, 0, 307, DateTimeKind.Local).AddTicks(7750),
+                            UsersJoinDate = new DateTime(2019, 11, 15, 15, 57, 47, 55, DateTimeKind.Local).AddTicks(9849),
                             UsersLastName = "Admin",
                             UsersMail = "Admin@poulina.com",
                             UsersMailIntern = "Admin@poulina.com",
@@ -588,12 +588,12 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            UsersId = new Guid("ca10e515-0486-487b-84f2-46571ace4542"),
-                            UsersBirthDate = new DateTime(2019, 10, 31, 10, 43, 0, 308, DateTimeKind.Local).AddTicks(2479),
+                            UsersId = new Guid("1edc2e9f-c013-4e95-b319-b5647e086be5"),
+                            UsersBirthDate = new DateTime(2019, 11, 15, 15, 57, 47, 56, DateTimeKind.Local).AddTicks(3396),
                             UsersCode = "00000001",
-                            UsersDateLeave = new DateTime(2019, 10, 31, 10, 43, 0, 308, DateTimeKind.Local).AddTicks(2486),
+                            UsersDateLeave = new DateTime(2019, 11, 15, 15, 57, 47, 56, DateTimeKind.Local).AddTicks(3400),
                             UsersGenderCode = "M",
-                            UsersJoinDate = new DateTime(2019, 10, 31, 10, 43, 0, 308, DateTimeKind.Local).AddTicks(2491),
+                            UsersJoinDate = new DateTime(2019, 11, 15, 15, 57, 47, 56, DateTimeKind.Local).AddTicks(3404),
                             UsersLastName = "SupAdmin",
                             UsersMail = "SupAdmin@poulina.com",
                             UsersMailIntern = "SupAdmin@poulina.com",
@@ -605,12 +605,12 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            UsersId = new Guid("99dfeff6-d3c4-4199-bc4b-b5e23bc23d11"),
-                            UsersBirthDate = new DateTime(2019, 10, 31, 10, 43, 0, 308, DateTimeKind.Local).AddTicks(2522),
+                            UsersId = new Guid("e950be8b-64f9-4b63-a12d-da9e417a7ca8"),
+                            UsersBirthDate = new DateTime(2019, 11, 15, 15, 57, 47, 56, DateTimeKind.Local).AddTicks(3428),
                             UsersCode = "00000002",
-                            UsersDateLeave = new DateTime(2019, 10, 31, 10, 43, 0, 308, DateTimeKind.Local).AddTicks(2523),
+                            UsersDateLeave = new DateTime(2019, 11, 15, 15, 57, 47, 56, DateTimeKind.Local).AddTicks(3428),
                             UsersGenderCode = "M",
-                            UsersJoinDate = new DateTime(2019, 10, 31, 10, 43, 0, 308, DateTimeKind.Local).AddTicks(2524),
+                            UsersJoinDate = new DateTime(2019, 11, 15, 15, 57, 47, 56, DateTimeKind.Local).AddTicks(3429),
                             UsersLastName = "Test",
                             UsersMail = "User1@poulina.com",
                             UsersMailIntern = "User1@poulina.com",
@@ -622,12 +622,12 @@ namespace Pgh.Auth.Model.Migrations
                         },
                         new
                         {
-                            UsersId = new Guid("2010c4f6-fa7d-422c-ba73-fc47009f4f8c"),
-                            UsersBirthDate = new DateTime(2019, 10, 31, 10, 43, 0, 308, DateTimeKind.Local).AddTicks(2527),
+                            UsersId = new Guid("fe14a91b-8b81-47ee-86bc-c73802330da7"),
+                            UsersBirthDate = new DateTime(2019, 11, 15, 15, 57, 47, 56, DateTimeKind.Local).AddTicks(3432),
                             UsersCode = "00000003",
-                            UsersDateLeave = new DateTime(2019, 10, 31, 10, 43, 0, 308, DateTimeKind.Local).AddTicks(2528),
+                            UsersDateLeave = new DateTime(2019, 11, 15, 15, 57, 47, 56, DateTimeKind.Local).AddTicks(3432),
                             UsersGenderCode = "M",
-                            UsersJoinDate = new DateTime(2019, 10, 31, 10, 43, 0, 308, DateTimeKind.Local).AddTicks(2529),
+                            UsersJoinDate = new DateTime(2019, 11, 15, 15, 57, 47, 56, DateTimeKind.Local).AddTicks(3433),
                             UsersLastName = "Test",
                             UsersMail = "User2@poulina.com",
                             UsersMailIntern = "User2@poulina.com",

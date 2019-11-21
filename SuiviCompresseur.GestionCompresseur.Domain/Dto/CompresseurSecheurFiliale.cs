@@ -12,6 +12,8 @@ namespace SuiviCompresseur.GestionCompresseur.Domain.Dto
         public Guid FilialeID { get; set; }
         public string Nom { get; set; }
         public bool Active { get; set; }
+        public bool HaveDebitMetre { get; set; }
+        public bool HaveElectricCounter { get; set; }
 
         public Guid EquipementFilialeCompSechID { get; set; }
         public double PrixAcquisition { get; set; }

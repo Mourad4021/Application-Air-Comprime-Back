@@ -14,6 +14,8 @@ using SuiviCompresseur.GestionCompresseur.Domain.Commands;
 using SuiviCompresseur.GestionCompresseur.Domain.Queries;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using SuiviCompresseur.Gestion.Responsable.Domain.Models;
+using SuiviCompresseur.Gestion.Responsable.Data.Context;
 
 namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
 {
@@ -61,12 +63,12 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
             }
         // PUT: api/Consommable/5
         //[AllowAnonymous]
-        [Authorize(Roles = "LimitedAccess , TotalControl")]
+        [Authorize(Roles = "LimitedAccess , TotalControl,Editors")]
         [HttpPut("{id}")]
         public async Task<string> PutConsommable([FromRoute] Guid id, [FromBody] Consommable consommable)
 
         {                
-  consommable.FraisElectriciteMensuel=consommable.ConsommationComp*consommable.PrixUnitaire;
+         consommable.FraisElectriciteMensuel=consommable.ConsommationComp*consommable.PrixUnitaire;
          return  await mediator.Send(new PutGenericCommand<Consommable>(id, consommable));
 
         }
@@ -77,5 +79,22 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
             await 
             mediator.Send(new RemoveGenericCommand<Consommable>(id));
 
+
+        [AllowAnonymous]
+        [HttpGet("active")]
+        public async Task<IEnumerable<Consommable>> GetActiveConsommables()
+        {
+            IEnumerable<Consommable> activeConsomableList = _context.Consommables.Where(x => x.Active == true);
+            return activeConsomableList;
+        }
+
+        [AllowAnonymous]
+        [HttpGet("EquipementFilialeByCOnsommableID")]
+        public async Task<Guid> GetEquipementFilialeByCOnsommableID(Guid consommableID)
+        {
+            Consommable consommable = _context.Consommables.Where(x => x.ConsommableID == consommableID).FirstOrDefault();
+            EquipementFiliale equipementFiliale = _context.EquipementFiliales.Where(x => x.EquipementFilialeID == consommable.EquipementFilialeID).FirstOrDefault();
+            return equipementFiliale.FilialeID;
+        }
     }
 }

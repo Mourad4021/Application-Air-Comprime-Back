@@ -130,6 +130,8 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
                     equip_Filiales_Comp_Sech.NumSerie = compresseurSecheurFiliale.NumSerie;
                     equip_Filiales_Comp_Sech.PrixAcquisition = compresseurSecheurFiliale.PrixAcquisition;
                     equip_Filiales_Comp_Sech.DateAcquisition = compresseurSecheurFiliale.DateAcquisition;
+                    equip_Filiales_Comp_Sech.HaveDebitMetre = compresseurSecheurFiliale.HaveDebitMetre;
+                    equip_Filiales_Comp_Sech.HaveElectricCounter = compresseurSecheurFiliale.HaveElectricCounter;
 
 
                     PostEquip_Filiales_Comp_Sech(equip_Filiales_Comp_Sech);
@@ -182,6 +184,8 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
                 equip_Filiales_Comp_Sech.PrixAcquisition = compresseurSecheurFiliale.PrixAcquisition;
                 equip_Filiales_Comp_Sech.DateAcquisition = compresseurSecheurFiliale.DateAcquisition;
                 equip_Filiales_Comp_Sech.EquipementFilialeCompSechID = compresseurSecheurFiliale.EquipementFilialeCompSechID;
+                equip_Filiales_Comp_Sech.HaveDebitMetre = compresseurSecheurFiliale.HaveDebitMetre;
+                equip_Filiales_Comp_Sech.HaveElectricCounter = compresseurSecheurFiliale.HaveElectricCounter;
 
                 PutEquip_Filiales_Comp_Sech(equip_Filiales_Comp_Sech.EquipementFilialeCompSechID, equip_Filiales_Comp_Sech);
 
@@ -245,7 +249,8 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
                 compresseurSecheurFiliale.DateAcquisition = compsechfiliale.DateAcquisition;
                 compresseurSecheurFiliale.NumSerie = compsechfiliale.NumSerie;
                 compresseurSecheurFiliale.EFID = compsechfiliale.EFID;
-
+                compresseurSecheurFiliale.HaveDebitMetre = compsechfiliale.HaveDebitMetre;
+                compresseurSecheurFiliale.HaveElectricCounter = compsechfiliale.HaveElectricCounter;
                 CompresseurSecheurFiliale.Add(compresseurSecheurFiliale);
             }
             return CompresseurSecheurFiliale;
@@ -291,6 +296,7 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
                 EquipementFiliale.FilialeID = item.FilialeID;
                 EquipementFiliale.Nom = item.Nom;
                 EquipementFiliale.Active = item.Active;
+                
 
 
                 equipementFiliale.Add(EquipementFiliale);
@@ -321,6 +327,79 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
 
             return DateTime.Now.Date.ToString("d");
         }
+
+
+
+
+        // GET: api/EquipementFiliales/CompresseursFiliales
+        [AllowAnonymous]
+        [HttpGet("CompresseursFiliales")]
+        public async Task<IEnumerable<CompresseurSecheurFiliale>> GetActiveCompresseursFiliale()
+        {
+
+            List<EquipementFiliale> CompresseurFilialeList = new List<EquipementFiliale>();
+
+           
+            var listCompresseur = _context.Compresseurs.Where(x => x.GetType().Equals(typeof(Compresseur))).ToList();
+            IEnumerable<Equipement> activeCompresseur = listCompresseur.Where(x => x.Active == true);
+
+            foreach (Equipement compresseur in listCompresseur.ToList())
+            {
+                foreach (EquipementFiliale equipementFiliale in _context.EquipementFiliales.ToList())
+                {
+                    if (compresseur.EquipementID == equipementFiliale.EquipementID)
+                    {
+                        CompresseurFilialeList.Add(equipementFiliale);
+                    }
+                }
+            }
+
+
+            IEnumerable<EquipementFiliale> activeEquipementFiliale = CompresseurFilialeList.Where(x => x.Active == true);
+            List<CompresseurSecheurFiliale> CompresseurFiliale = new List<CompresseurSecheurFiliale>();
+
+
+            foreach (var item in activeEquipementFiliale)
+            {
+                CompresseurSecheurFiliale compresseurSecheurFiliale = new CompresseurSecheurFiliale();
+                var compsechfiliale = _context.EquipFilialesCompSeches.Where(x => x.EFID == item.EquipementFilialeID).FirstOrDefault();
+
+                compresseurSecheurFiliale.EquipementFilialeID = item.EquipementFilialeID;
+                compresseurSecheurFiliale.EquipementID = item.EquipementID;
+                compresseurSecheurFiliale.FilialeID = item.FilialeID;
+                compresseurSecheurFiliale.Nom = item.Nom;
+                compresseurSecheurFiliale.Active = item.Active;
+                compresseurSecheurFiliale.EquipementFilialeCompSechID = compsechfiliale.EquipementFilialeCompSechID;
+                compresseurSecheurFiliale.PrixAcquisition = compsechfiliale.PrixAcquisition;
+                compresseurSecheurFiliale.DateAcquisition = compsechfiliale.DateAcquisition;
+                compresseurSecheurFiliale.NumSerie = compsechfiliale.NumSerie;
+                compresseurSecheurFiliale.EFID = compsechfiliale.EFID;
+                compresseurSecheurFiliale.HaveDebitMetre = compsechfiliale.HaveDebitMetre;
+                compresseurSecheurFiliale.HaveElectricCounter = compsechfiliale.HaveElectricCounter;
+
+                CompresseurFiliale.Add(compresseurSecheurFiliale);
+            }
+            return CompresseurFiliale;
+        }
+        // GET: api/EquipementFiliales/CompresseursFilialesParFiliale
+        [AllowAnonymous]
+        [HttpGet("CompresseursFilialesParFiliale")]
+        public async Task<IEnumerable<CompresseurSecheurFiliale>> GetActiveCompresseursFilialeParFiliale(Guid filialeID)
+        {
+            List<CompresseurSecheurFiliale> compresseurSecheurFilialesNEW = new List<CompresseurSecheurFiliale>();
+            IEnumerable<CompresseurSecheurFiliale> compresseurSecheurFiliales = await this.GetActiveCompresseursFiliale();
+            foreach (var item in compresseurSecheurFiliales)
+            {
+                if (item.FilialeID== filialeID)
+                {
+                    compresseurSecheurFilialesNEW.Add(item);
+                }
+            }
+            return compresseurSecheurFilialesNEW;
+        }
+
+
+
 
     }
 }

@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SuiviCompresseur.Infra.IoC\SuiviCompresseur.Infra.IoC.csproj" />
     <ProjectReference Include="..\SuiviCompresseur.GestionCompresseur.Data\SuiviCompresseur.GestionCompresseur.Data.csproj" />
+    <ProjectReference Include="..\SuiviCompresseur.Infra.IoC\SuiviCompresseur.Infra.IoC.csproj" />
   </ItemGroup>
 
   <ItemGroup>
