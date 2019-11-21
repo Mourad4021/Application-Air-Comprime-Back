@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SuiviCompresseur.GestionCompresseur.Data.Context;
 
 namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
 {
     [DbContext(typeof(CompresseurDbContext))]
-    partial class CompresseurDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191119170526_11111111")]
+    partial class _11111111
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,8 +53,6 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
                 {
                     b.Property<Guid>("ConsommableID")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("Active");
 
                     b.Property<int>("ConsommationComp");
 
@@ -128,10 +128,6 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
 
                     b.Property<Guid>("EFID");
 
-                    b.Property<bool>("HaveDebitMetre");
-
-                    b.Property<bool>("HaveElectricCounter");
-
                     b.Property<int>("NumSerie");
 
                     b.Property<double>("PrixAcquisition");
@@ -190,6 +186,8 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
                     b.Property<Guid>("FicheSuiviID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<double>("CourantAbsorbePhase");
+
                     b.Property<DateTime>("Date");
 
                     b.Property<Guid>("EquipementFilialeID");
@@ -198,7 +196,7 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
 
                     b.Property<double>("FraisEntretienReparation");
 
-                    b.Property<int>("Index_Debitmetre");
+                    b.Property<string>("FrequenceEentretienDeshuileur");
 
                     b.Property<int>("Index_Electrique");
 
@@ -206,21 +204,15 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
 
                     b.Property<int>("Nbre_Heurs_Total");
 
-                    b.Property<int>("NombreDeJoursOuvrablesDuMois");
-
-                    b.Property<int>("NombreHeuresProductionUsineLeJourPrecedent");
-
-                    b.Property<string>("PointDeRoseeDuSecheur");
-
-                    b.Property<int>("PriseCompteurDernierEntretien");
+                    b.Property<double>("PriseCompteur");
 
                     b.Property<string>("Remarques");
 
                     b.Property<double>("THuileC");
 
-                    b.Property<double>("TempsArret");
+                    b.Property<string>("TSecheurC");
 
-                    b.Property<int>("TypeDernierEntretien");
+                    b.Property<double>("TempsArret");
 
                     b.HasKey("FicheSuiviID");
 

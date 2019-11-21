@@ -41,7 +41,7 @@ namespace SuiviCompresseur.Notification.Api.Controllers
         }
 
         // POST api/values
-        [Authorize(Roles = "Editors , TotalControl")]
+         [Authorize(Roles = "Editors , TotalControl , LimitedAccess")]
         [HttpPost]
         public async Task<string> SendEmail([FromBody] EmailMessage emailMessage)
         {

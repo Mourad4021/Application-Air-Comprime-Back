@@ -58,7 +58,7 @@ namespace SuiviCompresseur.Notification.Data.Repositories
         public string Send(EmailMessage emailMessage)
         {
             string NameFrom = emailMessage.FromAddresses.Substring(1, emailMessage.FromAddresses.IndexOf("/") - 1);
-            string NameTo = emailMessage.FromAddresses.Substring(1, emailMessage.FromAddresses.IndexOf("/") - 1);
+            string NameTo = emailMessage.ToAddresses.Substring(1, emailMessage.ToAddresses.IndexOf("/") - 1);
             var message = new MimeMessage();
 
             try

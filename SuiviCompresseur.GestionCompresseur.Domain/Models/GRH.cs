@@ -23,6 +23,8 @@ namespace SuiviCompresseur.GestionCompresseur.Domain.Models
        [Required]
        [DataType(DataType.Date)]
        public DateTime Date { get; set; }
+       public decimal ChargesMensuelles { get; set; }
+
 
 
 
