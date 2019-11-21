@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
 {
-    public partial class fffkmmm : Migration
+    public partial class tra : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -185,7 +185,8 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
                     EquipementFilialeID = table.Column<Guid>(nullable: false),
                     Salaire = table.Column<decimal>(nullable: false),
                     TauxAffectationAirComprime = table.Column<float>(nullable: false),
-                    Date = table.Column<DateTime>(nullable: false)
+                    Date = table.Column<DateTime>(nullable: false),
+                    ChargesMensuelles = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
