@@ -42,7 +42,7 @@ namespace SuiviCompresseur.GestionCompresseur.Domain.Models
        
         [Required]
         public double THuileC { get; set; }
-        public string TSecheurC { get; set; }
+        
         public string Remarques { get; set; }
         public  ICollection<Attachment> Attachments { get; set; }
         

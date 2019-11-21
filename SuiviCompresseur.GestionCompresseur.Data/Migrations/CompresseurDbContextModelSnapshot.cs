@@ -218,8 +218,6 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
 
                     b.Property<double>("THuileC");
 
-                    b.Property<string>("TSecheurC");
-
                     b.Property<double>("TempsArret");
 
                     b.Property<int>("TypeDernierEntretien");
