@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
 {
-    public partial class _1234 : Migration
+    public partial class fffkmmm : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -60,6 +60,7 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
                     EquipementFilialeID = table.Column<Guid>(nullable: false),
                     ConsommationComp = table.Column<int>(nullable: false),
                     PrixUnitaire = table.Column<decimal>(nullable: false),
+                    Active = table.Column<bool>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false),
                     FraisElectriciteMensuel = table.Column<decimal>(nullable: false)
                 },
@@ -128,6 +129,8 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
                     PrixAcquisition = table.Column<double>(nullable: false),
                     DateAcquisition = table.Column<DateTime>(nullable: false),
                     NumSerie = table.Column<int>(nullable: false),
+                    HaveDebitMetre = table.Column<bool>(nullable: false),
+                    HaveElectricCounter = table.Column<bool>(nullable: false),
                     EFID = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
@@ -153,12 +156,14 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
                     Index_Electrique = table.Column<int>(nullable: false),
                     TempsArret = table.Column<double>(nullable: false),
                     Etat = table.Column<int>(nullable: false),
-                    FrequenceEentretienDeshuileur = table.Column<string>(nullable: true),
-                    CourantAbsorbePhase = table.Column<double>(nullable: false),
+                    Index_Debitmetre = table.Column<int>(nullable: false),
+                    PointDeRoseeDuSecheur = table.Column<string>(nullable: true),
+                    TypeDernierEntretien = table.Column<int>(nullable: false),
+                    PriseCompteurDernierEntretien = table.Column<int>(nullable: false),
+                    NombreHeuresProductionUsineLeJourPrecedent = table.Column<int>(nullable: false),
+                    NombreDeJoursOuvrablesDuMois = table.Column<int>(nullable: false),
                     FraisEntretienReparation = table.Column<double>(nullable: false),
-                    PriseCompteur = table.Column<double>(nullable: false),
                     THuileC = table.Column<double>(nullable: false),
-                    TSecheurC = table.Column<string>(nullable: true),
                     Remarques = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
