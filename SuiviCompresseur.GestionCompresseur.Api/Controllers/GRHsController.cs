@@ -47,7 +47,7 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
 
 
         // PUT: api/GRHs/5
-        [Authorize(Roles = "TotalControl , LimitedAccess")]
+        [Authorize(Roles = "Editors , TotalControl , LimitedAccess")]
         [HttpPut("{id}")]
         public async Task<string> PutGRH([FromRoute] Guid id, [FromBody] GRH grh) =>
             await mediator.Send(new PutGenericCommand<GRH>(id, grh));

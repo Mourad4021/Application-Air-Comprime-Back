@@ -50,6 +50,8 @@ using SuiviCompresseur.GestionCompresseur.Domain.Queries.AttachementQuery;
 using SuiviCompresseur.GestionCompresseur.Domain.CommandHandlers.AttachmentHandler;
 using Microsoft.AspNetCore.Mvc;
 using SuiviCompresseur.GestionCompresseur.Domain.CommandHandlers.AttachementHandler;
+using SuiviCompresseur.GestionFournisseur.Domain.CommandHandlers.AttachementFournisseurHandler;
+using SuiviCompresseur.GestionFournisseur.Domain.Queries.AttachementQuery;
 
 namespace SuiviCompresseur.Infra.IoC
 {
@@ -186,10 +188,10 @@ namespace SuiviCompresseur.Infra.IoC
             services.AddTransient<IRequestHandler<RemoveGenericCommand<Attachment>, string>, RemoveGenericHandler<Attachment>>();
             services.AddTransient<IRequestHandler<GetAttachmentsByEntretienReservoirIdQuery, IEnumerable<Attachment>>, GetAttachmentsByEntretienReservoirIdHandler>();
 
-
-
-
-
+            //AttachementFournisseur
+            services.AddTransient<IAttachementFournisseurRepository, AttachementFournisseurRepository>();
+            services.AddTransient<IRequestHandler<GetAttachmentsByFournisseurIdQuery, IEnumerable<AttachementFournisseur>>, GetAttachmentsByFournisseurIdHandler>();
+            services.AddTransient<IRequestHandler<GetAttachmentFournisseurFileByIdQuery, byte[]>, GetAttachmentFournisseurFileByIdHandler>();
             //Entretien Reservoir 
             services.AddTransient<IGenericRepository<EntretienReservoir>, GenericRepository<EntretienReservoir>>();
             services.AddTransient<IRequestHandler<CreateGenericCommand<EntretienReservoir>, string>, CreateGenericHandler<EntretienReservoir>>();

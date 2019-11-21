@@ -31,7 +31,7 @@ namespace SuiviCompresseur.GestionResponsable.Api.Controllers
 
         // GET api/Users
         //[AllowAnonymous]
-        [Authorize(Roles = "Editors , TotalControl")]
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IEnumerable<Users>> GetUserss() =>
             await mediator.Send(new GetAllGenericQueryGR<Users>());

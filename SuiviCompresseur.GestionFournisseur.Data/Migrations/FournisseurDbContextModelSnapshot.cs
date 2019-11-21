@@ -19,6 +19,30 @@ namespace SuiviCompresseur.GestionFournisseur.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("SuiviCompresseur.GestionFournisseur.Domain.Models.AttachementFournisseur", b =>
+                {
+                    b.Property<Guid>("AttachmentFournisseurId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("AttachementUploadDateF");
+
+                    b.Property<string>("AttachmentFileFormatF");
+
+                    b.Property<string>("AttachmentNameF");
+
+                    b.Property<string>("AttachmentOriginFileNameF");
+
+                    b.Property<string>("AttachmentPhysicalPathF");
+
+                    b.Property<Guid>("FournisseurID");
+
+                    b.HasKey("AttachmentFournisseurId");
+
+                    b.HasIndex("FournisseurID");
+
+                    b.ToTable("AttachementFournisseurs");
+                });
+
             modelBuilder.Entity("SuiviCompresseur.GestionFournisseur.Domain.Models.Fournisseur", b =>
                 {
                     b.Property<Guid>("FournisseurID")
@@ -42,6 +66,14 @@ namespace SuiviCompresseur.GestionFournisseur.Data.Migrations
                     b.HasKey("FournisseurID");
 
                     b.ToTable("Fournisseurs");
+                });
+
+            modelBuilder.Entity("SuiviCompresseur.GestionFournisseur.Domain.Models.AttachementFournisseur", b =>
+                {
+                    b.HasOne("SuiviCompresseur.GestionFournisseur.Domain.Models.Fournisseur", "Fournisseur")
+                        .WithMany("AttachementFournisseurs")
+                        .HasForeignKey("FournisseurID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
