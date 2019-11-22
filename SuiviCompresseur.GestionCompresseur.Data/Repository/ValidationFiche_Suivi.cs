@@ -39,7 +39,9 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Repository
 
                     //if (fiche_Suivi.Date.DayOfWeek != DayOfWeek.Saturday && fiche_Suivi.Date.DayOfWeek != DayOfWeek.Sunday)
                     //{
-                        var exist = _context.Fiche_Suivis.Where(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID).FirstOrDefault();
+
+                    var exist = _context.Fiche_Suivis.Where(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID).FirstOrDefault();
+
                         if (exist != null)
                         {
                             var FirstMonth = _context.Fiche_Suivis.Min(c => c.Date);
@@ -70,13 +72,14 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Repository
                                     lastMonthDate = new DateTime(annee, mois, numberOfDays);
                                 }
 
-                                if (_context.Fiche_Suivis.Count(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID)<30)
-                                {
-                                    result = "true";
-                                }
-                                else
-                                {
-                                    var res = _context.Fiche_Suivis.Where(c => c.Date == lastMonthDate).FirstOrDefault();
+                            if (_context.Fiche_Suivis.Count(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID) < 30)
+                            {
+                                result = "true";
+                            }
+                            else
+                            {
+                                var res = _context.Fiche_Suivis.Where(c => c.Date == lastMonthDate).FirstOrDefault();
+
                                 if (res != null)
                                     result = "true";
                                 else
@@ -84,11 +87,15 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Repository
                                 }
                                 
                             }
-                            else
-                                result = "true";
+
                         }
                         else
                             result = "true";
+
+                    }
+                    else
+                        result = "true";
+
 
                     //}
                     //else
