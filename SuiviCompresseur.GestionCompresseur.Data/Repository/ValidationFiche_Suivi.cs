@@ -37,9 +37,9 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Repository
                 if (value <= 0)
                 {
 
-                    if (fiche_Suivi.Date.DayOfWeek != DayOfWeek.Saturday && fiche_Suivi.Date.DayOfWeek != DayOfWeek.Sunday)
-                    {
-                        var exist = _context.Fiche_Suivis.Where(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID).FirstOrDefault();
+                    //if (fiche_Suivi.Date.DayOfWeek != DayOfWeek.Saturday && fiche_Suivi.Date.DayOfWeek != DayOfWeek.Sunday)
+                    //{
+                    var exist = _context.Fiche_Suivis.Where(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID).FirstOrDefault();
                         if (exist != null)
                         {
                             var FirstMonth = _context.Fiche_Suivis.Min(c => c.Date);
@@ -69,21 +69,29 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Repository
                                 {
                                     lastMonthDate = new DateTime(annee, mois, numberOfDays);
                                 }
+                            if (_context.Fiche_Suivis.Count(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID) < 30)
+                            {
+                                result = "true";
+                            }
+                            else
+                            {
                                 var res = _context.Fiche_Suivis.Where(c => c.Date == lastMonthDate).FirstOrDefault();
                                 if (res != null)
                                     result = "true";
                                 else
                                     result = "The last day of the previous month not completed";
                             }
-                            else
-                                result = "true";
+
                         }
                         else
                             result = "true";
-
                     }
                     else
-                        result = "Week-end";
+                        result = "true";
+
+                    //}
+                    //else
+                    //    result = "Week-end";
                 }
                 else
                     result = "Date superior to the date of today";

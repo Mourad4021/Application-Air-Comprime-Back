@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,8 +17,7 @@ using System.Threading.Tasks;
 namespace Pgh.Services.Authentification.Controllers
 {
     [Route("api/[controller]")]
-
-    //[Route("api/Applications/{AppId}/Groupes")]
+   
     [ApiController]
     public class ApplicationsController : ControllerBase
     {
@@ -294,9 +294,9 @@ namespace Pgh.Services.Authentification.Controllers
         }
 
         #endregion
-        
-        #region Association Applications Users
 
+        #region Association Applications Users
+        
         [HttpGet("/api/Applications/{applicationId}/Users")]
         public async Task<ActionResult> GetApplicationUsers(Guid applicationId)
         {
@@ -310,7 +310,7 @@ namespace Pgh.Services.Authentification.Controllers
 
         }
 
-        [Authorize(Roles = "Editors , TotalControl")]
+       // [Authorize(Roles = "TotalControl , LimitedAccess")]
         [HttpPost("/api/Applications/{applicationId}/Users")]
         public async Task<ActionResult> AddUsersToApplication(Guid applicationId,[FromBody]IEnumerable<AppUsersDto> liUsers)
         {
@@ -354,7 +354,7 @@ namespace Pgh.Services.Authentification.Controllers
             return new JsonResult(res);
         }
 
-        [Authorize(Roles = "Editors , TotalControl")]
+        //[Authorize(Roles = "Editors , TotalControl")]
         [HttpPut("/api/Applications/{applicationId}/Users")]
         public async Task<ActionResult> UpdateUsersToApplication(Guid applicationId, [FromBody]IEnumerable<AppUsersDto> liUsers)
         {
