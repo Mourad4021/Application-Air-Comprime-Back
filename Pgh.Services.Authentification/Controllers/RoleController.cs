@@ -556,7 +556,7 @@ namespace Pgh.Services.Authentification.Controllers
             return new JsonResult(res);
         }
 
-        [Authorize(Roles = "Editors , TotalControl")]
+       // [Authorize(Roles = "Editors , TotalControl")]
         [HttpPost("/api/roles/Users-Menus")]
         public async Task<ActionResult> PostUsersMenusList([FromBody]IEnumerable<RoleUsersMenusDtoCreate> li)
         {
@@ -601,7 +601,7 @@ namespace Pgh.Services.Authentification.Controllers
             return new JsonResult(res);
         }
 
-        [Authorize(Roles = "Editors , TotalControl")]
+     //   [Authorize(Roles = "Editors , TotalControl")]
         [HttpPut("/api/roles/Users-Menus")]
         public async Task<ActionResult> PutRolesUsersMenus([FromBody] RoleUsersMenusDtoUpdate liEntity ,Guid Id)
         {

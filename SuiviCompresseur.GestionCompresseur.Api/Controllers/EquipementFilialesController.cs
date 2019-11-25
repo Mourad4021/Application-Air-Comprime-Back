@@ -296,6 +296,7 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
                 EquipementFiliale.FilialeID = item.FilialeID;
                 EquipementFiliale.Nom = item.Nom;
                 EquipementFiliale.Active = item.Active;
+                
 
 
                 equipementFiliale.Add(EquipementFiliale);
@@ -379,6 +380,57 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
                 CompresseurFiliale.Add(compresseurSecheurFiliale);
             }
             return CompresseurFiliale;
+        }
+        // GET: api/EquipementFiliales/CompresseursFilialesParFiliale
+        [AllowAnonymous]
+        [HttpGet("CompresseursFilialesParFiliale")]
+        public async Task<IEnumerable<CompresseurSecheurFiliale>> GetActiveCompresseursFilialeParFiliale(Guid filialeID)
+        {
+            List<CompresseurSecheurFiliale> compresseurSecheurFilialesNEW = new List<CompresseurSecheurFiliale>();
+            IEnumerable<CompresseurSecheurFiliale> compresseurSecheurFiliales = await this.GetActiveCompresseursFiliale();
+            foreach (var item in compresseurSecheurFiliales)
+            {
+                if (item.FilialeID== filialeID)
+                {
+                    compresseurSecheurFilialesNEW.Add(item);
+                }
+            }
+            return compresseurSecheurFilialesNEW;
+        }
+
+
+        // PUT: api/EquipementFiliales/5
+       // [Authorize(Roles = "LimitedAccess , TotalControl")]
+        [HttpPut("CompresseurSecheurFilialesFakeDelete")]
+        public async Task<string> PutCompSechFilialeFakeDelete( Guid equipementFilialeID)
+        {
+            IEnumerable<CompresseurSecheurFiliale> equipementFiliales = await this.GetActiveCompresseurSecheurFiliale();
+            CompresseurSecheurFiliale compresseurSecheurFiliale = new CompresseurSecheurFiliale();
+            compresseurSecheurFiliale= equipementFiliales.Where(x => x.EquipementFilialeID == equipementFilialeID).FirstOrDefault();
+                EquipementFiliale equipementFiliale = new EquipementFiliale();
+
+                equipementFiliale.EquipementFilialeID = compresseurSecheurFiliale.EquipementFilialeID;
+                equipementFiliale.EquipementID = compresseurSecheurFiliale.EquipementID;
+                equipementFiliale.FilialeID = compresseurSecheurFiliale.FilialeID;
+                equipementFiliale.Nom = compresseurSecheurFiliale.Nom;
+            equipementFiliale.Active = false;
+
+                PutEquipementFiliale(equipementFiliale.EquipementFilialeID, equipementFiliale);
+
+                Equip_Filiales_Comp_Sech equip_Filiales_Comp_Sech = new Equip_Filiales_Comp_Sech();
+
+                equip_Filiales_Comp_Sech.EFID = equipementFiliale.EquipementFilialeID;
+                equip_Filiales_Comp_Sech.NumSerie = compresseurSecheurFiliale.NumSerie;
+                equip_Filiales_Comp_Sech.PrixAcquisition = compresseurSecheurFiliale.PrixAcquisition;
+                equip_Filiales_Comp_Sech.DateAcquisition = compresseurSecheurFiliale.DateAcquisition;
+                equip_Filiales_Comp_Sech.EquipementFilialeCompSechID = compresseurSecheurFiliale.EquipementFilialeCompSechID;
+                equip_Filiales_Comp_Sech.HaveDebitMetre = compresseurSecheurFiliale.HaveDebitMetre;
+                equip_Filiales_Comp_Sech.HaveElectricCounter = compresseurSecheurFiliale.HaveElectricCounter;
+
+                PutEquip_Filiales_Comp_Sech(equip_Filiales_Comp_Sech.EquipementFilialeCompSechID, equip_Filiales_Comp_Sech);
+
+                return ("Update Done");
+            
         }
 
     }

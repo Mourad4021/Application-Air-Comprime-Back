@@ -10,8 +10,8 @@ using SuiviCompresseur.GestionCompresseur.Data.Context;
 namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
 {
     [DbContext(typeof(CompresseurDbContext))]
-    [Migration("20191118184337_gfgm")]
-    partial class gfgm
+    [Migration("20191121153650_1")]
+    partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -208,6 +208,8 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
 
                     b.Property<int>("Nbre_Heurs_Total");
 
+                    b.Property<int>("NombreDeJoursOuvrablesDuMois");
+
                     b.Property<int>("NombreHeuresProductionUsineLeJourPrecedent");
 
                     b.Property<string>("PointDeRoseeDuSecheur");
@@ -217,8 +219,6 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
                     b.Property<string>("Remarques");
 
                     b.Property<double>("THuileC");
-
-                    b.Property<string>("TSecheurC");
 
                     b.Property<double>("TempsArret");
 
@@ -235,6 +235,8 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
                 {
                     b.Property<Guid>("GRhID")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<decimal>("ChargesMensuelles");
 
                     b.Property<DateTime>("Date");
 

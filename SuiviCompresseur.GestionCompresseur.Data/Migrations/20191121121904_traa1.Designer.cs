@@ -10,8 +10,8 @@ using SuiviCompresseur.GestionCompresseur.Data.Context;
 namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
 {
     [DbContext(typeof(CompresseurDbContext))]
-    [Migration("20191118145153_v3")]
-    partial class v3
+    [Migration("20191121121904_traa1")]
+    partial class traa1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,6 +53,8 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
                 {
                     b.Property<Guid>("ConsommableID")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("Active");
 
                     b.Property<int>("ConsommationComp");
 
@@ -218,8 +220,6 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
 
                     b.Property<double>("THuileC");
 
-                    b.Property<string>("TSecheurC");
-
                     b.Property<double>("TempsArret");
 
                     b.Property<int>("TypeDernierEntretien");
@@ -235,6 +235,8 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Migrations
                 {
                     b.Property<Guid>("GRhID")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<decimal>("ChargesMensuelles");
 
                     b.Property<DateTime>("Date");
 

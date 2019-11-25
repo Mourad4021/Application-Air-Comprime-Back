@@ -14,5 +14,6 @@ namespace SuiviCompresseur.GestionFournisseur.Data.Context
         }
 
         public DbSet<Fournisseur> Fournisseurs { get; set; }
+        public DbSet<AttachementFournisseur> AttachementFournisseurs { get; set; }
     }
 }

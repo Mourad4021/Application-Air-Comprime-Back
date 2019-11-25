@@ -21,6 +21,7 @@ namespace SuiviCompresseur.GestionCompresseur.Domain.Models
         public Guid? EntretienReservoirID { get; set; }
         public EntretienReservoir EntretienReservoir { get; set; }
 
+
         //collection navigation properties
     }
 }

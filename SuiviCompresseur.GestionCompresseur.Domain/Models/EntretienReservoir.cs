@@ -15,7 +15,7 @@ namespace SuiviCompresseur.GestionCompresseur.Domain.Models
         public DateTime DerniereVisite { get; set; }
         public DateTime ProchaineVisite { get; set; }
         public string Commentaires { get; set; }
-
+       // public bool active { get; set; }
         public ICollection<Attachment> Attachments { get; set; }
 
 
