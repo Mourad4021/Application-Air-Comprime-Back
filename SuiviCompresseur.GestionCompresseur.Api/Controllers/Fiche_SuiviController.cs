@@ -99,6 +99,13 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
 
         }
 
+        // GET: api/Fiche_Suivis/LastFicheSuiviByCompresseurFililaeId
+        [AllowAnonymous]
+        [HttpGet("LastFicheSuiviByCompresseurFililaeId")]
+        public Fiche_Suivi LastFicheSuiviByCompresseurFililaeId(Guid idEqupementFiliale)
+        {
+            return _context.Fiche_Suivis.Where(fs => fs.EquipementFilialeID == idEqupementFiliale).OrderBy(p => p.Date).LastOrDefault();
+        }
 
 
         [AllowAnonymous]
