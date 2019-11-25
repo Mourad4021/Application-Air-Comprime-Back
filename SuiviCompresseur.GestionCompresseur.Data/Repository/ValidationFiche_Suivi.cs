@@ -38,57 +38,57 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Repository
                 {
 
                     ////if (fiche_Suivi.Date.DayOfWeek != DayOfWeek.Saturday && fiche_Suivi.Date.DayOfWeek != DayOfWeek.Sunday)
-                   // //{
-                        var exist = _context.Fiche_Suivis.Where(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID).FirstOrDefault();
-                        if (exist != null)
+                    // //{
+                    var exist = _context.Fiche_Suivis.Where(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID).FirstOrDefault();
+                    if (exist != null)
+                    {
+                        var FirstMonth = _context.Fiche_Suivis.Min(c => c.Date);
+                        firtM = DateTime.Compare(fiche_Suivi.Date, FirstMonth);
+                        if (firtM != 0)
                         {
-                            var FirstMonth = _context.Fiche_Suivis.Min(c => c.Date);
-                            firtM = DateTime.Compare(fiche_Suivi.Date, FirstMonth);
-                            if (firtM != 0)
+                            DateTime lastMonthDate;
+                            int annee = fiche_Suivi.Date.Year;
+                            int mois = fiche_Suivi.Date.Month - 1;
+                            if (mois == 0)
                             {
-                                DateTime lastMonthDate;
-                                int annee = fiche_Suivi.Date.Year;
-                                int mois = fiche_Suivi.Date.Month - 1;
-                                if (mois == 0)
-                                {
-                                    mois = 12;
-                                    annee--;
-                                }
-                                int numberOfDays = DateTime.DaysInMonth(annee, mois);
-                                DateTime date = new DateTime(annee, mois, numberOfDays);
+                                mois = 12;
+                                annee--;
+                            }
+                            int numberOfDays = DateTime.DaysInMonth(annee, mois);
+                            DateTime date = new DateTime(annee, mois, numberOfDays);
 
-                                if (date.DayOfWeek == DayOfWeek.Saturday)
-                                {
-                                    lastMonthDate = new DateTime(annee, mois, numberOfDays - 1);
-                                }
-                                else if (date.DayOfWeek == DayOfWeek.Sunday)
-                                {
-                                    lastMonthDate = new DateTime(annee, mois, numberOfDays - 2);
-                                }
-                                else
-                                {
-                                    lastMonthDate = new DateTime(annee, mois, numberOfDays);
-                                }
+                            if (date.DayOfWeek == DayOfWeek.Saturday)
+                            {
+                                lastMonthDate = new DateTime(annee, mois, numberOfDays - 1);
+                            }
+                            else if (date.DayOfWeek == DayOfWeek.Sunday)
+                            {
+                                lastMonthDate = new DateTime(annee, mois, numberOfDays - 2);
+                            }
+                            else
+                            {
+                                lastMonthDate = new DateTime(annee, mois, numberOfDays);
+                            }
 
-                                if (_context.Fiche_Suivis.Count(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID)<30)
-                                {
-                                    result = "true";
-                                }
-                                else
-                                {
-                                    var res = _context.Fiche_Suivis.Where(c => c.Date == lastMonthDate).FirstOrDefault();
+                            if (_context.Fiche_Suivis.Count(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID) < 30)
+                            {
+                                result = "true";
+                            }
+                            else
+                            {
+                                var res = _context.Fiche_Suivis.Where(c => c.Date == lastMonthDate).FirstOrDefault();
                                 if (res != null)
                                     result = "true";
                                 else
                                     result = "The last day of the previous month not completed";
-                                }
-                                
                             }
-                            else
-                                result = "true";
+
                         }
                         else
                             result = "true";
+                    }
+                    else
+                        result = "true";
 
                     //}
                     //else
