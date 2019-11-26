@@ -61,13 +61,13 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
 
 
         // POST: api/EquipementFiliales
-        [Authorize(Roles = "LimitedAccess , TotalControl")]
+        [Authorize(Roles = "Editors , TotalControl , LimitedAccess")]
         [HttpPost]
         public async Task<string> PostEquipementFiliale([FromBody] EquipementFiliale EquipementFiliale) =>
             await mediator.Send(new CreateGenericCommand<EquipementFiliale>(EquipementFiliale));
 
         // PUT: api/EquipementFiliales/5
-        [Authorize(Roles = "LimitedAccess , TotalControl")]
+        [Authorize(Roles = "Editors , TotalControl , LimitedAccess")]
         [HttpPut("{id}")]
         public async Task<string> PutEquipementFiliale([FromRoute] Guid id, [FromBody] EquipementFiliale EquipementFiliale) =>
             await mediator.Send(new PutGenericCommand<EquipementFiliale>(id, EquipementFiliale));
@@ -83,7 +83,7 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
 
 
         // POST: api/CompresseurSecheurFiliales
-        [Authorize(Roles = "LimitedAccess , TotalControl")]
+        [Authorize(Roles = "Editors , TotalControl , LimitedAccess")]
         [HttpPost("CompresseurSecheurFiliales")]
         public async Task<string> PostCompresseurSecheurFiliales([FromBody] CompresseurSecheurFiliale compresseurSecheurFiliale)
         {
@@ -145,7 +145,7 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
         }
 
         // PUT: api/EquipementFiliales/5
-        [Authorize(Roles = "LimitedAccess , TotalControl")]
+        [Authorize(Roles = "Editors , TotalControl , LimitedAccess")]
         [HttpPut("CompresseurSecheurFiliales")]
         public async Task<string> PutCompSechFiliale([FromBody] CompresseurSecheurFiliale compresseurSecheurFiliale)
         {
