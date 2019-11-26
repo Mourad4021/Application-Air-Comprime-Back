@@ -29,6 +29,7 @@ namespace Pgh.Services.Authentification.Helpers
         [JsonProperty("Liste_des_permissions")]
         public List<MenuPermission> MenuPermissions { get; set; }
 
+        public Guid ApplicationId { get; set; }
     }
 
     public class MenuPermission
