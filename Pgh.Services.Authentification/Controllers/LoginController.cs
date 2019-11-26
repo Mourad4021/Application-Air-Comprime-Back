@@ -161,7 +161,6 @@ namespace Pgh.Services.Authentification.Controllers
                 PhoneInterne = user.UsersPhoneNumber,
                 PhoneExterne = user.UsersPersonalNumber,
                 ApplicationId=application.AppId,
-
                 RoleUser = Work.Role.Get(x => x.RoleId == role11.RoleId).Result.RoleDisplayName,
                 UserLogin = user.UsersCode
             };
