@@ -150,18 +150,18 @@ namespace SuiviCompresseur.GestionCompresseur.Api.Controllers
         public async Task<string> PutCompSechFiliale([FromBody] CompresseurSecheurFiliale compresseurSecheurFiliale)
         {
             IEnumerable<CompresseurSecheurFiliale> EquipementFilaleList = await GetActiveCompresseurSecheurFiliale();
-            if (EquipementFilaleList.Where(x => x.FilialeID == compresseurSecheurFiliale.FilialeID).Select(w => w.Nom).Contains(compresseurSecheurFiliale.Nom)
-                && EquipementFilaleList.Where(x => x.FilialeID == compresseurSecheurFiliale.FilialeID).Select(w => w.NumSerie).Contains(compresseurSecheurFiliale.NumSerie))
+            if (EquipementFilaleList.Where(x => x.FilialeID == compresseurSecheurFiliale.FilialeID).Where(x=>x.EquipementFilialeID!= compresseurSecheurFiliale.EquipementFilialeID).Select(w => w.Nom).Contains(compresseurSecheurFiliale.Nom)
+                && EquipementFilaleList.Where(x => x.FilialeID == compresseurSecheurFiliale.FilialeID).Where(x => x.EquipementFilialeID != compresseurSecheurFiliale.EquipementFilialeID).Select(w => w.NumSerie).Contains(compresseurSecheurFiliale.NumSerie))
             {
                 return ("Nom et NumSerie Existants");
             }
-            else if (EquipementFilaleList.Where(x => x.FilialeID == compresseurSecheurFiliale.FilialeID).Select(w => w.Nom).Contains(compresseurSecheurFiliale.Nom).Equals(false)
-                && EquipementFilaleList.Where(x => x.FilialeID == compresseurSecheurFiliale.FilialeID).Select(w => w.NumSerie).Contains(compresseurSecheurFiliale.NumSerie))
+            else if (EquipementFilaleList.Where(x => x.FilialeID == compresseurSecheurFiliale.FilialeID).Where(x => x.EquipementFilialeID != compresseurSecheurFiliale.EquipementFilialeID).Select(w => w.Nom).Contains(compresseurSecheurFiliale.Nom).Equals(false)
+                && EquipementFilaleList.Where(x => x.FilialeID == compresseurSecheurFiliale.FilialeID).Where(x => x.EquipementFilialeID != compresseurSecheurFiliale.EquipementFilialeID).Select(w => w.NumSerie).Contains(compresseurSecheurFiliale.NumSerie))
             {
                 return ("NumSerie Existant");
             }
-            else if (EquipementFilaleList.Where(x => x.FilialeID == compresseurSecheurFiliale.FilialeID).Select(w => w.Nom).Contains(compresseurSecheurFiliale.Nom)
-               && EquipementFilaleList.Where(x => x.FilialeID == compresseurSecheurFiliale.FilialeID).Select(w => w.NumSerie).Contains(compresseurSecheurFiliale.NumSerie).Equals(false))
+            else if (EquipementFilaleList.Where(x => x.FilialeID == compresseurSecheurFiliale.FilialeID).Where(x => x.EquipementFilialeID != compresseurSecheurFiliale.EquipementFilialeID).Select(w => w.Nom).Contains(compresseurSecheurFiliale.Nom)
+               && EquipementFilaleList.Where(x => x.FilialeID == compresseurSecheurFiliale.FilialeID).Where(x => x.EquipementFilialeID != compresseurSecheurFiliale.EquipementFilialeID).Select(w => w.NumSerie).Contains(compresseurSecheurFiliale.NumSerie).Equals(false))
             {
                 return ("Nom Existant");
             }

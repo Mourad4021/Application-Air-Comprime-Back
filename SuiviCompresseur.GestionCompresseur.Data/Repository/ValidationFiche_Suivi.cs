@@ -18,16 +18,16 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Repository
             int max = 0;
             int maxtothours = 0;
             int maxchargehours = 0;
-            var maxpossible = _context.Fiche_Suivis.Where(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID &&
-            DateTime.Compare(fiche_Suivi.Date, c.Date) < 0).FirstOrDefault();
+            int maxIndexDebimetre = 0;
+            var maxpossible = _context.Fiche_Suivis.Where(x => x.EquipementFilialeID == fiche_Suivi.EquipementFilialeID).OrderBy(x=>x.Date).LastOrDefault();
+            //&&
+            //DateTime.Compare(fiche_Suivi.Date, c.Date) < 0).FirstOrDefault();
             if (maxpossible != null)
             {
-                max = _context.Fiche_Suivis.Where(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID &&
-                DateTime.Compare(fiche_Suivi.Date, c.Date) < 0).Max(c => c.Index_Electrique);
-                maxtothours = _context.Fiche_Suivis.Where(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID &&
-               DateTime.Compare(fiche_Suivi.Date, c.Date) < 0).Max(c => c.Nbre_Heurs_Total);
-                maxchargehours = _context.Fiche_Suivis.Where(c => c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID &&
-                 DateTime.Compare(fiche_Suivi.Date, c.Date) < 0).Max(c => c.Nbre_Heurs_Charge);
+                max = maxpossible.Index_Electrique;
+                maxtothours = maxpossible.Nbre_Heurs_Total;
+                maxchargehours = maxpossible.Nbre_Heurs_Charge;
+                maxIndexDebimetre = maxpossible.Index_Debitmetre;
             }
             string datedouble = TestDoubleDate(fiche_Suivi);
             int firtM = 0;
@@ -110,11 +110,18 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Repository
                             {
                                 if (fiche_Suivi.Nbre_Heurs_Charge >= maxchargehours)
                                 {
-                                    return "true";
+                                    if (fiche_Suivi.Index_Debitmetre >= maxIndexDebimetre)
+                                    {
+                                        return "true";
+                                    }
+                                    else
+                                    {
+                                        return "Index debimetre lower than the previous index";
+                                    }
                                 }
                                 else
                                 {
-                                    return "nbre heures total lower than the previous nbre heures total";
+                                    return "nbre heures charge lower than the previous nbre heures charge";
                                 }
                             }
                             else
@@ -139,6 +146,20 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Repository
 
         public string testPut(Fiche_Suivi fiche_Suivi, Guid id)
         {
+            int max = 0;
+            int maxtothours = 0;
+            int maxchargehours = 0;
+            int maxIndexDebimetre = 0;
+            var maxpossible = _context.Fiche_Suivis.Where(x => x.EquipementFilialeID == fiche_Suivi.EquipementFilialeID).OrderBy(x => x.Date).LastOrDefault();
+            //&&
+            //DateTime.Compare(fiche_Suivi.Date, c.Date) < 0).FirstOrDefault();
+            if (maxpossible != null)
+            {
+                max = maxpossible.Index_Electrique;
+                maxtothours = maxpossible.Nbre_Heurs_Total;
+                maxchargehours = maxpossible.Nbre_Heurs_Charge;
+                maxIndexDebimetre = maxpossible.Index_Debitmetre;
+            }
             string result;
             //string datedouble = TestDoubleDatePut(fiche_Suivi, id);
             //if (datedouble == "true")
@@ -192,21 +213,41 @@ namespace SuiviCompresseur.GestionCompresseur.Data.Repository
 
             //if (result == "true")
             //{
-            int max = _context.Fiche_Suivis.Where(c => (c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID) && (c.Date < fiche_Suivi.Date)).Max(c => c.Index_Electrique);
+         //   int max = _context.Fiche_Suivis.Where(c => (c.EquipementFilialeID == fiche_Suivi.EquipementFilialeID) && (c.Date < fiche_Suivi.Date)).Max(c => c.Index_Electrique);
             if (fiche_Suivi.Nbre_Heurs_Charge < fiche_Suivi.Nbre_Heurs_Total)
             {
                 if (fiche_Suivi.Index_Electrique >= max)
                 {
+                    if (fiche_Suivi.Nbre_Heurs_Total >= maxtothours)
                     {
-                        var entity = _context.Fiche_Suivis.Find(id);
-                        if (entity != null)
+                        if (fiche_Suivi.Nbre_Heurs_Charge >= maxchargehours)
                         {
-                            return "true";
+                            if (fiche_Suivi.Index_Debitmetre >= maxIndexDebimetre)
+                            {
+                                var entity = _context.Fiche_Suivis.Find(id);
+                                if (entity != null)
+                                {
+                                    return "true";
+                                }
+                                else
+                                {
+                                    return "Fiche suivi don't exist";
+                                }
+
+                            }
+                            else
+                            {
+                                return "Index debimetre lower than the previous index";
+                            }
                         }
                         else
                         {
-                            return "Fiche suivi don't exist";
+                            return "nbre heures charge lower than the previous nbre heures charge";
                         }
+                    }
+                    else
+                    {
+                        return "nbre heures total lower than the previous nbre heures total";
                     }
                 }
                 else
